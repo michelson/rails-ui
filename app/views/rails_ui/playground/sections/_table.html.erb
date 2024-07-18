@@ -1,0 +1,44 @@
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Invoice Table")) do |component| %>
+  <% component.with_example do %>
+    <%
+      data = [
+        { id: 'INV001', status: 'Paid', method: 'Credit Card', amount: 250.00 },
+        { id: 'INV002', status: 'Pending', method: 'PayPal', amount: 150.00 },
+        { id: 'INV003', status: 'Unpaid', method: 'Bank Transfer', amount: 350.00 },
+        { id: 'INV004', status: 'Paid', method: 'Credit Card', amount: 450.00 },
+        { id: 'INV005', status: 'Paid', method: 'PayPal', amount: 550.00 },
+        { id: 'INV006', status: 'Pending', method: 'Bank Transfer', amount: 200.00 },
+        { id: 'INV007', status: 'Unpaid', method: 'Credit Card', amount: 300.00 }
+      ]
+
+      columns = [
+        { key: :id, label: 'Invoice', class: 'w-[100px] font-medium' },
+        { key: :status, label: 'Status' },
+        { key: :method, label: 'Method' },
+        { 
+          key: :amount, 
+          label: 'Amount', 
+          class: 'text-right',
+          render: ->(row) { number_to_currency(row[:amount]) }
+        }
+      ]
+    %>
+
+    <div data-controller="hello">
+      HELLO
+    </div>
+
+    <%= render(RailsUi::Table::Component.new(
+      data: data,
+      columns: columns,
+      caption: "A list of your recent invoices."
+    )) do %>
+      <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+        <td class="p-4 align-middle [&:has([role=checkbox])]:pr-0" colspan="3">Total</td>
+        <td class="p-4 align-middle [&:has([role=checkbox])]:pr-0 text-right">
+          <%= number_to_currency(data.sum { |row| row[:amount] }) %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+<% end %>

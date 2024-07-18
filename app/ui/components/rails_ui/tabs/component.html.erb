@@ -1,0 +1,36 @@
+<div class="tabs w-full">
+  <div role="tablist" aria-orientation="<%= orientation %>" class="<%= tab_list_classes %>" tabindex="0" data-orientation="<%= orientation %>" style="outline: none;">
+    <% if variant == :buttons %>
+      <% items.each_with_index do |item, index| %>
+        <button type="button" 
+                role="tab" 
+                aria-selected="<%= item[:active] %>" 
+                aria-controls="tab-content-<%= index %>"
+                data-state="<%= item[:active] ? 'active' : 'inactive' %>"
+                id="tab-<%= index %>"
+                class="<%= tab_classes(item) %>"
+                tabindex="<%= item[:active] ? 0 : -1 %>"
+                data-orientation="<%= orientation %>"
+                data-radix-collection-item="">
+          <%= item[:label] %>
+        </button>
+      <% end %>
+    <% else %>
+      <nav class="-mb-px flex justify-start w-screen">
+        <% items.each_with_index do |item, index| %>
+          <a href="<%= item[:href] %>"
+             <%= "data-turbo-frame=#{turbo_frame}" if turbo_frame %>
+             <%= "data-turbo-action=#{item[:turbo_action]}" if item[:turbo_action] %>
+             class="tab-item <%= tab_classes(item) %> <%= index > 0 ? 'ml-4 lg:ml-8' : '' %>">
+            <%= item[:icon] if item[:icon] %>
+            <span><%= item[:label] %></span>
+          </a>
+        <% end %>
+      </nav>
+    <% end %>
+  </div>
+
+  <% if content %>
+    <div class="py-4"><%= content %></div>
+  <% end %>
+</div>

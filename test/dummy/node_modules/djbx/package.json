@@ -1,0 +1,12 @@
+{
+  "name": "djbx",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "pemrouz (https://github.com/pemrouz)",
+  "license": "pemrouz.mit-license.org"
+}

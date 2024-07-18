@@ -1,0 +1,24 @@
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Default Card")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Card::Component.new(
+      title: "Notifications",
+      description: "You have 3 unread messages.",
+      footer: "Card Footer"
+    )) do |card| %>
+      <p>This is the main content of the card.</p>
+      <p>You can add any HTML or other components here.</p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Card without Footer")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Card::Component.new(
+      title: "Profile",
+      description: "Update your personal information."
+    )) do |card| %>
+      <p>This card doesn't have a footer.</p>
+      <p>The content can be as long as needed.</p>
+    <% end %>
+  <% end %>
+<% end %>

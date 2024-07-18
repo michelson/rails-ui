@@ -1,0 +1,43 @@
+<%# app/components/rails_ui/input_otp/component.html.erb %>
+<div data-controller="ui-input-otp"
+     data-ui-input-otp-groups-value="<%= groups.to_json %>"
+     data-input-otp-container="true"
+     class="flex items-center gap-2 has-[:disabled]:opacity-50"
+     style="position: relative; cursor: text; user-select: none; --root-height: 40px;">
+  <!-- ring-2 ring-ring ring-offset-background -->
+  <% groups.each_with_index do |group_size, group_index| %>
+    <div class="flex items-center">
+      <% group_size.times do |i| %>
+        <div class="relative flex h-10 w-10 items-center 
+        justify-center border-y border-r border-input text-sm
+         transition-all first:rounded-l-md first:border-l last:rounded-r-md
+         "
+             data-ui-input-otp-target="digit"
+             data-group="<%= group_index %>"
+             data-index="<%= i %>">
+        </div>
+      <% end %>
+    </div>
+    
+    <% if separator && group_index < groups.size - 1 %>
+      <div role="separator">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot">
+          <circle cx="12.1" cy="12.1" r="1"></circle>
+        </svg>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div style="position: absolute; inset: 0px;">
+    <input autocomplete="<%= autocomplete %>"
+           class="disabled:cursor-not-allowed"
+           data-ui-input-otp-target="input"
+           data-input-otp="true"
+           inputmode="<%= input_mode %>"
+           pattern="<%= pattern %>"
+           maxlength="<%= total_digits %>"
+           value=""
+           <%= "disabled" if disabled %>
+           style="position: absolute; inset: 0px; width: 100%; height: 100%; display: flex; text-align: left; opacity: 0; color: transparent; background: transparent; caret-color: transparent; border: 0px solid transparent; outline: none; box-shadow: none; line-height: 1; letter-spacing: -0.5em; font-size: var(--root-height); font-family: monospace; font-variant-numeric: tabular-nums;">
+  </div>
+</div>

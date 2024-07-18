@@ -1,0 +1,9 @@
+<span class="relative flex shrink-0 overflow-hidden rounded-full <%= size_classes %>">
+  <% if src %>
+    <%= image_tag src, class: "aspect-square h-full w-full", alt: alt %>
+  <% else %>
+    <span class="flex h-full w-full items-center justify-center bg-muted text-muted-foreground">
+      <%= fallback_initials %>
+    </span>
+  <% end %>
+</span>

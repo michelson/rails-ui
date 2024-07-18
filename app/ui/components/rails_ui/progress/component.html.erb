@@ -1,0 +1,17 @@
+<div 
+  aria-valuemax="<%= max %>" 
+  aria-valuemin="0" 
+  <%= "aria-valuenow=\"#{value}\"" unless indeterminate? %>
+  role="progressbar" 
+  data-state="<%= indeterminate? ? 'indeterminate' : 'loading' %>" 
+  data-max="<%= max %>" 
+  class="relative h-4 overflow-hidden rounded-full bg-secondary"
+  style="width: <%= width %>;"
+>
+  <div 
+    data-state="<%= indeterminate? ? 'indeterminate' : 'loading' %>" 
+    data-max="<%= max %>" 
+    class="h-full w-full flex-1 bg-primary transition-all" 
+    style="<%= progress_style %>"
+  ></div>
+</div>

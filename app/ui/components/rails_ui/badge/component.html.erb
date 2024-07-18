@@ -1,0 +1,6 @@
+<div class="<%= class_names(base_classes, variant_classes) %>">
+  <% if icon.present? %>
+    <span class="mr-1"><%= icon.html_safe %></span>
+  <% end %>
+  <%= content %>
+</div>

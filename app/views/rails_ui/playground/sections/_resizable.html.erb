@@ -1,0 +1,58 @@
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Default Button")) do |component| %>
+  <% component.with_example do %>
+    <%= render RailsUi::Resizable::Component.new(
+      direction: "horizontal",
+      panels: [
+        {
+          defaultSize: 50,
+          content: "One"
+        },
+        {
+          defaultSize: 50,
+          direction: "vertical",
+          children: [
+            {
+              defaultSize: 25,
+              content: "Two"
+            },
+            {
+              defaultSize: 75,
+              content: "Three"
+            }
+          ]
+        }
+      ]
+    ) %>
+  <% end %>
+
+  <% component.with_code do %>
+    ...
+  <% end %>
+<% end %>
+
+
+
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Default Button")) do |component| %>
+  <% component.with_example do %>
+    <%= render RailsUi::Resizable::Component.new(
+      direction: "horizontal",
+      panels: [
+        {
+          defaultSize: 31.7,
+          content: "Sidebar"
+        },
+        {
+          defaultSize: 68.3,
+          content: "Content"
+        }
+      ]
+    ) %>
+  <% end %>
+
+  <% component.with_code do %>
+    ...
+  <% end %>
+<% end %>
+

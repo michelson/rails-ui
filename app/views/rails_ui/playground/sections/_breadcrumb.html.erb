@@ -1,0 +1,27 @@
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Default Breadcrumb")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Breadcrumb::Component.new) do |breadcrumb| %>
+      <% breadcrumb.with_item(href: "/") { "Home" } %>
+      <% breadcrumb.with_item(href: "/components") { "Components" } %>
+      <% breadcrumb.with_item(current: true) { "Breadcrumb" } %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Breadcrumb with More Options")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Breadcrumb::Component.new) do |breadcrumb| %>
+      <% breadcrumb.with_item(href: "#") { "Home" } %>
+      <% breadcrumb.with_item do %>
+        <button type="button" id="more-options" aria-haspopup="menu" aria-expanded="false" data-state="closed" class="flex items-center gap-1" aria-label="Toggle menu">
+          <span role="presentation" aria-hidden="true" class="flex items-center justify-center h-4 w-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ellipsis h-4 w-4"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+            <span class="sr-only">More</span>
+          </span>
+        </button>
+      <% end %>
+      <% breadcrumb.with_item(href: "#") { "Data Fetching" } %>
+      <% breadcrumb.with_item(current: true) { "Caching and Revalidating" } %>
+    <% end %>
+  <% end %>
+<% end %>

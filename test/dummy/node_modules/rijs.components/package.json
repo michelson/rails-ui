@@ -1,0 +1,32 @@
+{
+  "name": "rijs.components",
+  "version": "3.1.16",
+  "main": "index",
+  "author": "Pedram Emrouznejad (https://github.com/pemrouz)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rijs/components.git"
+  },
+  "scripts": {
+    "build": "npm run rollup && npm run minify && npm run gzip",
+    "rollup": "rollup -c",
+    "minify": "uglifyjs client.bundle.js -m -c keep_fargs=false > client.min.js",
+    "gzip": "gzip -c client.min.js > client.min.js.gz",
+    "test": "popper --color",
+    "version": "npm run build && git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "license": "pemrouz.mit-license.org",
+  "devDependencies": {
+    "rollup": "^0.58.1",
+    "rollup-plugin-buble": "^0.16.0",
+    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-nodent": "^0.2.2",
+    "uglify-es": "^3.3.10"
+  },
+  "dependencies": {
+    "@compone/define": "^1.2.4",
+    "utilise": "^2.3.5"
+  }
+}

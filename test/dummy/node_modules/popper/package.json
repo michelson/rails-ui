@@ -1,0 +1,50 @@
+{
+  "name": "popper",
+  "main": "index.js",
+  "version": "1.0.1",
+  "description": "Realtime Cross-Browser Automation",
+  "dependencies": {
+    "browser-icons": "*",
+    "browserify": "^12.0.0",
+    "buble": "^0.16.0",
+    "chai": "*",
+    "chokidar": "*",
+    "colors": "^1.1.2",
+    "compression": "*",
+    "cryonic": "^1.0.0",
+    "express": "^4.12.4",
+    "js-yaml": "*",
+    "minimist": "*",
+    "mocha": "*",
+    "platform": "*",
+    "rijs.sync": "*",
+    "rijs.core": "*",
+    "rijs.data": "*",
+    "rijs.npm": "*",
+    "rijs.css": "*",
+    "rijs.fn": "*",
+    "rijs": "*",
+    "rijs.resdir": "*",
+    "serve-static": "*",
+    "utilise": "*",
+    "wd": "*"
+  },
+  "optionalDependencies": {
+    "ngrok": "*"
+  },
+  "devDependencies": {
+    "uglifyjs": "^2.4.10"
+  },
+  "author": "Pedram Emrouznejad (https://github.com/pemrouz)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pemrouz/popper.git"
+  },
+  "license": "pemrouz.mit-license.org",
+  "bin": "./cli",
+  "scripts": {
+    "build": "find ./client/*/client.js -exec sh -c \"FILE={}; RUNNER=${FILE:9:-10}; echo bundling client: $RUNNER; buble ./client/$RUNNER/client.js | browserify - -i utilise -i express -i colors > client/$RUNNER/client.min.js\" ';'",
+    "version": "npm run build && git add -A",
+    "postversion": "git push && git push --tags"
+  }
+}

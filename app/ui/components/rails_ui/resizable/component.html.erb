@@ -1,0 +1,53 @@
+<%# app/components/rails_ui/resizable/component.html.erb %>
+<div id="<%= id %>"
+     data-controller="ui-resizable"
+     data-ui-resizable-direction-value="<%= direction %>"
+     data-ui-resizable-panels-value="<%= panels.to_json %>"
+     data-panel-group=""
+     data-panel-group-direction="<%= direction %>"
+     data-panel-group-id="<%= id %>"
+     data-panel-group-units="percentages"
+     class="flex h-full w-full <%= direction == 'vertical' ? 'flex-col' : '' %> <%= class_name %>"
+     style="display: flex; flex-direction: <%= direction == 'vertical' ? 'column' : 'row' %>; height: 100%; overflow: hidden; width: 100%;">
+  <% panels.each_with_index do |panel, index| %>
+    <div data-panel=""
+         data-panel-id="<%= "#{id}-panel-#{index}" %>"
+         data-panel-size="<%= panel[:defaultSize] %>"
+         id="data-panel-id-<%= "#{id}-panel-#{index}" %>"
+         style="flex: <%= panel[:defaultSize] %> 1 0px; overflow: hidden;">
+      <% if panel[:children] %>
+        <%= render RailsUi::Resizable::Component.new(
+          direction: panel[:direction] || "vertical",
+          panels: panel[:children],
+          class_name: "h-full"
+        ) %>
+      <% else %>
+        <div class="flex h-full items-center justify-center p-6">
+          <span class="font-semibold"><%= panel[:content] %></span>
+        </div>
+      <% end %>
+    </div>
+    <% if index < panels.size - 1 %>
+      <div class="relative flex w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90"
+           data-panel-group-direction="<%= direction %>"
+           data-panel-group-id="<%= id %>"
+           data-panel-resize-handle-enabled="true"
+           data-panel-resize-handle-id="<%= "#{id}-handle-#{index}" %>"
+           role="separator"
+           tabindex="0"
+           aria-controls="data-panel-id-<%= "#{id}-panel-#{index}" %>"
+           style="cursor: <%= direction == 'horizontal' ? 'ew-resize' : 'ns-resize' %>; touch-action: none; user-select: none;">
+        <div class="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grip-vertical h-2.5 w-2.5">
+            <circle cx="9" cy="12" r="1"></circle>
+            <circle cx="9" cy="5" r="1"></circle>
+            <circle cx="9" cy="19" r="1"></circle>
+            <circle cx="15" cy="12" r="1"></circle>
+            <circle cx="15" cy="5" r="1"></circle>
+            <circle cx="15" cy="19" r="1"></circle>
+          </svg>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

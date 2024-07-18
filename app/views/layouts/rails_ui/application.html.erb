@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rails ui</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-erb.min.js"></script>
+
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag    "rails_ui/application", media: "all" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+</head>
+
+<body>
+
+  <div class="flex space-x-2">
+    <%= render "nav" %>
+    <div class="p-4 flex-grow h-screen overflow-auto">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

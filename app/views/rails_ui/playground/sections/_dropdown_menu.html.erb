@@ -1,0 +1,12 @@
+<%= render RailsUi::DropdownMenu::Component.new do |menu| %>
+  <% menu.with_trigger do %>
+    Options
+  <% end %>
+
+  
+  <% menu.with_item(icon: "user.svg") { "Profile" } %>
+  <% menu.with_item(icon: "settings.svg", shortcut: "⌘S") { "Settings" } %>
+  <% menu.with_separator %>
+  <% menu.with_item(icon: "log-out.svg", html_options: { class: "text-red-500" }) { "Log out" } %>
+
+<% end %>

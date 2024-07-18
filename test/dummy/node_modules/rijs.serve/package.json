@@ -1,0 +1,33 @@
+{
+  "name": "rijs.serve",
+  "version": "1.1.1",
+  "main": "index",
+  "browser": "./node_modules/utilise/identity.js",
+  "author": "Pedram Emrouznejad (https://github.com/pemrouz)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rijs/serve.git"
+  },
+  "scripts": {
+    "test": "istanbul test ./node_modules/mocha/bin/_mocha --report html -- -R spec",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
+    "cov": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "license": "pemrouz.mit-license.org",
+  "devDependencies": {
+    "chai": "*",
+    "coveralls": "*",
+    "istanbul": "*",
+    "mocha": "^5.1.1",
+    "mocha-lcov-reporter": "*",
+    "rijs": "^0.9.1",
+    "supertest": "^1.0.1"
+  },
+  "dependencies": {
+    "compression": "^1.7.2",
+    "express": "^4.16.3",
+    "utilise": "^2.3.5"
+  }
+}

@@ -1,0 +1,19 @@
+<% if variant == :avatar %>
+  <div class="flex items-center space-x-4">
+    <div class="animate-pulse bg-muted <%= avatar_size %> rounded-full"></div>
+    <div class="space-y-2">
+      <% lines.times do |i| %>
+        <div class="animate-pulse rounded-md bg-muted h-4" style="width: <%= line_widths[i] || '200px' %>;"></div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="flex flex-col space-y-3">
+    <div class="animate-pulse bg-muted <%= card_size %> rounded-xl"></div>
+    <div class="space-y-2">
+      <% lines.times do |i| %>
+        <div class="animate-pulse rounded-md bg-muted h-4" style="width: <%= line_widths[i] || '200px' %>;"></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

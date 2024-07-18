@@ -1,0 +1,21 @@
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Avatar with Image")) do |component| %>
+  <% component.with_example do %>
+  <%= render RailsUi::Accordion::Component.new(type: "single", collapsible: true) do |accordion|
+      accordion.with_item(value: "item-1") do |item|
+        item.with_trigger { "Is it accessible?" }
+        "Yes. It adheres to the WAI-ARIA design pattern."
+      end
+
+      accordion.with_item(value: "item-2") do |item|
+        item.with_trigger { "Is it styled?" }
+        "Yes. It comes with default styles that matches the other components' aesthetic."
+      end
+
+      accordion.with_item(value: "item-3") do |item|
+        item.with_trigger { "Is it animated?" }
+        "Yes. It's animated by default, but you can disable it if you prefer."
+      end
+    end
+  %>
+  <% end %>
+<% end %>

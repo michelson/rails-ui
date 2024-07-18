@@ -1,0 +1,13 @@
+{
+  "name": "@compone/define",
+  "version": "1.2.4",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "pemrouz (https://github.com/pemrouz)",
+  "license": "pemrouz.mit-license.org",
+  "dependencies": {
+    "@compone/class": "^1.1.1",
+    "@compone/event": "^1.1.2"
+  }
+}

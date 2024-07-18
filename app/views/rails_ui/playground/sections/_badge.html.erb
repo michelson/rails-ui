@@ -1,0 +1,31 @@
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Default Badge")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Badge::Component.new) { 'Default' } %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Secondary Badge")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Badge::Component.new(variant: :secondary)) { 'Secondary' } %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Outline Badge")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Badge::Component.new(variant: :outline)) { 'Outline' } %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Destructive Badge")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Badge::Component.new(variant: :destructive)) { 'Destructive' } %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Badge with Icon")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Badge::Component.new(
+      icon: '<svg class="h-4 w-4 text-white" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>')
+    ) { 'With Icon' } %>
+  <% end %>
+<% end %>

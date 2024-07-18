@@ -1,0 +1,37 @@
+{
+  "name": "rijs.singleton",
+  "version": "1.0.0",
+  "main": "index",
+  "author": "Pedram Emrouznejad (https://github.com/pemrouz)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rijs/singleton.git"
+  },
+  "scripts": {
+    "build": "npm run rollup && npm run minify && npm run gzip",
+    "rollup": "rollup -c",
+    "minify": "uglifyjs client.bundle.js -m -c keep_fargs=false > client.min.js",
+    "gzip": "gzip -c client.min.js > client.min.js.gz",
+    "test": "istanbul test ./node_modules/mocha/bin/_mocha --report html -- -R spec",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
+    "cov": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
+    "version": "npm run build && git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "license": "pemrouz.mit-license.org",
+  "devDependencies": {
+    "chai": "*",
+    "coveralls": "*",
+    "istanbul": "*",
+    "mocha": "*",
+    "mocha-lcov-reporter": "*",
+    "rollup": "*",
+    "rollup-plugin-buble": "^0.16.0",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "uglify-es": "*"
+  },
+  "dependencies": {
+    "utilise": "*"
+  }
+}

@@ -1,0 +1,11 @@
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Default Carousel")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Carousel::Component.new(items: [
+      '<span class="text-4xl font-semibold">1</span>',
+      '<span class="text-4xl font-semibold">2</span>',
+      '<span class="text-4xl font-semibold">3</span>',
+      '<span class="text-4xl font-semibold">4</span>',
+      '<span class="text-4xl font-semibold">5</span>'
+    ])) %>
+  <% end %>
+<% end %>

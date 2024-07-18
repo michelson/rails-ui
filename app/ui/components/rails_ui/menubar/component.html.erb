@@ -1,0 +1,37 @@
+<%# app/components/rails_ui/menubar/component.html.erb %>
+<div data-controller="ui-menubar"
+     role="menubar"
+     class="flex h-10 items-center space-x-1 rounded-md border bg-background p-1"
+     tabindex="0"
+     data-orientation="horizontal"
+     data-ui-menubar-top-level>
+  <% items.each_with_index do |item, index| %>
+    <button type="button"
+            role="menuitem"
+            id="menu-item-<%= index %>"
+            aria-haspopup="<%= item[:submenu] ? 'menu' : 'false' %>"
+            aria-expanded="false"
+            data-ui-menubar-target="menuItem"
+            data-ui-menubar-item="<%= index %>"
+            data-state="closed"
+            class="flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
+            tabindex="<%= index == 0 ? 0 : -1 %>"
+            data-orientation="horizontal"
+            data-has-submenu="<%= item[:submenu] ? 'true' : 'false' %>">
+      <%= item[:label] %>
+      <% if item[:submenu] %>
+        <%= chevron_down_svg %>
+      <% end %>
+    </button>
+  <% end %>
+
+
+<template data-ui-menubar-target="submenuTemplate">
+  <% items.each_with_index do |item, index| %>
+    <% if item[:submenu] %>
+      <%= submenu_content(item[:submenu], index.to_s) %>
+    <% end %>
+  <% end %>
+</template>
+
+</div>

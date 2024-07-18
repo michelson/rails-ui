@@ -1,0 +1,8 @@
+<%= render RailsUi::InputOtp::Component.new(
+  groups: [3, 3],  # Two groups of 3 digits
+  separator: true,
+  input_mode: "numeric",
+  pattern: "^\\d+$",
+  autocomplete: "one-time-code",
+  disabled: false
+) %>

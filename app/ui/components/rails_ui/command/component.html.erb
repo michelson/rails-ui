@@ -1,0 +1,71 @@
+<%# app/components/rails_ui/command/component.html.erb %>
+<div data-controller="ui-command"
+     class="flex h-full w-full flex-col overflow-hidden bg-popover text-popover-foreground rounded-lg border shadow-md"
+     cmdk-root="">
+  <label cmdk-label="" for="<%= id %>-input" id="<%= id %>-label" class="sr-only">
+    <%= placeholder %>
+  </label>
+  <div class="flex items-center border-b px-3" cmdk-input-wrapper="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search mr-2 h-4 w-4 shrink-0 opacity-50">
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+    </svg>
+    <input id="<%= id %>-input"
+           class="flex h-11 w-full rounded-md bg-transparent py-3 text-sm 
+           outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed 
+           disabled:opacity-50 
+           border-transparent focus:border-transparent focus:ring-0"
+           placeholder="<%= placeholder %>"
+           cmdk-input=""
+           autocomplete="off"
+           autocorrect="off"
+           spellcheck="false"
+           aria-autocomplete="list"
+           role="combobox"
+           aria-expanded="true"
+           aria-controls="<%= id %>-list"
+           aria-labelledby="<%= id %>-label"
+           type="text"
+           data-ui-command-target="input">
+  </div>
+  <div class="max-h-[300px] overflow-y-auto overflow-x-hidden"
+       cmdk-list=""
+       role="listbox"
+       aria-label="Suggestions"
+       id="<%= id %>-list"
+       aria-labelledby="<%= id %>-input"
+       data-ui-command-target="list">
+    <div cmdk-list-sizer="">
+      <% sections.each_with_index do |section, section_index| %>
+        <div class="overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground"
+             cmdk-group=""
+             role="presentation"
+             data-value="<%= section[:title].downcase %>">
+          <div cmdk-group-heading="" aria-hidden="true" id="<%= id %>-group-<%= section_index %>">
+            <%= section[:title] %>
+          </div>
+          <div cmdk-group-items="" role="group" aria-labelledby="<%= id %>-group-<%= section_index %>">
+            <% section[:items].each do |item| %>
+              <div class="relative flex cursor-pointer select-none items-center gap-x-2 rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+                   cmdk-item=""
+                   role="option"
+                   data-value="<%= item[:value] %>"
+                   data-ui-command-target="item">
+                <% if item[:icon] %>
+                  <%= raw item[:icon] %>
+                <% end %>
+                <span><%= item[:label] %></span>
+                <% if item[:shortcut] %>
+                  <span class="ml-auto text-xs tracking-widest text-muted-foreground"><%= item[:shortcut] %></span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <% if section_index < sections.size - 1 %>
+          <div class="-mx-1 h-px bg-border" cmdk-separator="" role="separator"></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

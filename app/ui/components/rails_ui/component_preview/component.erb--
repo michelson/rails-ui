@@ -1,0 +1,11 @@
+<div class="border rounded-lg overflow-hidden">
+  <h3 class="bg-gray-100 px-4 py-2 font-semibold"><%= title %></h3>
+  <div class="flex flex-col md:flex-row">
+    <div class="preview flex min-h-[350px] w-full justify-center p-10 items-center border-b md:border-b-0 md:border-r">
+      <%= rendered_content %>
+    </div>
+    <div class="w-full md:w-1/2 p-4">
+      <pre class="language-erb"><code class="language-erb"><%= source_code %></code></pre>
+    </div>
+  </div>
+</div>

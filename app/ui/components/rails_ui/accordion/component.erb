@@ -1,0 +1,7 @@
+
+  <div class="<%= class_names("w-full", @collapsible ? "collapsible" : nil) %>" 
+    data-controller="ui-accordion" data-accordion-type="<%= @type%>">
+    <% items.each do |item| %>
+      <%= item %>
+    <% end %>
+  </div>

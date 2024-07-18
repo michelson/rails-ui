@@ -1,0 +1,36 @@
+{
+  "name": "rijs.resdir",
+  "version": "1.4.4",
+  "main": "index",
+  "browser": "./node_modules/utilise/identity.js",
+  "author": "Pedram Emrouznejad (https://github.com/pemrouz)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rijs/resdir.git"
+  },
+  "scripts": {
+    "reset": "sh -c \"echo '/* istanbul ignore next */' > ./resources/foo.js\" && sh -c \"echo 'module.exports = function foo(){ }' >> ./resources/foo.js\"",
+    "test": "npm run reset && istanbul test ./node_modules/mocha/bin/_mocha --report html --trace-warnings -- -R spec",
+    "coverage": "npm run reset && istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
+    "cov": "npm run reset && istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "license": "pemrouz.mit-license.org",
+  "devDependencies": {
+    "chai": "*",
+    "coveralls": "*",
+    "istanbul": "*",
+    "mocha": "^5.1.1",
+    "mocha-lcov-reporter": "*",
+    "rijs.core": "^1.2.4",
+    "rijs.css": "^1.2.4",
+    "rijs.fn": "^1.2.5"
+  },
+  "dependencies": {
+    "chokidar": "^1.0.5",
+    "glob": "^7.1.2",
+    "minimist": "^1.2.0",
+    "utilise": "^2.3.5"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "rijs.npm",
+  "version": "2.0.0",
+  "main": ".",
+  "author": "Pedram Emrouznejad (https://github.com/pemrouz)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rijs/npm.git"
+  },
+  "scripts": {
+    "test": "tap dist/**/test.js",
+    "coverage": "tap dist/**/test.js --cov --coverage-report=lcov",
+    "version": "npm run build && git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "license": "pemrouz.mit-license.org",
+  "devDependencies": {
+    "tap": "*"
+  },
+  "dependencies": {
+    "browser-resolve": "^1.11.2",
+    "browserify": "^14.5.0",
+    "find-package-json": "^1.0.0",
+    "utilise": "*"
+  }
+}

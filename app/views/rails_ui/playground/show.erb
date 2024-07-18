@@ -1,0 +1,10 @@
+<div class="container mx-auto px-4">
+  <h1 class="text-2xl font-bold mb-4"><%= @section.titleize %></h1>
+  
+  <%= render partial: "rails_ui/playground/sections/#{@section}", rescue: nil %>
+  
+  <% if @section.blank? %> 
+    <!-- % || !lookup_context.template_exists?("playground/sections/_#{@section}", [], true) -->
+    <p>No content available for this section.</p>
+  <% end %>
+</div>

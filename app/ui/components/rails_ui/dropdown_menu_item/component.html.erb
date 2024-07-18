@@ -1,0 +1,10 @@
+<%= tag.send(tag_name, **html_options) do %>
+  <% if icon.present? %>
+    <%= icon %>
+    <% # inline_svg_tag icon, class: "mr-2 h-4 w-4" %>
+  <% end %>
+  <%= content %>
+  <% if shortcut.present? %>
+    <span class="ml-auto text-xs tracking-widest opacity-60"><%= shortcut %></span>
+  <% end %>
+<% end %>

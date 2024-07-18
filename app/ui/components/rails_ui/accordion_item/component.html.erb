@@ -1,0 +1,42 @@
+<div 
+  data-ui-accordion-target="item"
+  data-ui-accordion-open-value="false"
+  data-orientation="vertical" 
+  class="border-b">
+  
+  <h3 data-orientation="vertical" class="flex">
+    <button type="button" 
+      aria-expanded="false" 
+      data-action="click->ui-accordion#toggle" 
+      data-orientation="vertical" 
+      class="flex flex-1 items-center justify-between 
+      py-4 font-medium transition-all hover:underline 
+      [&[data-ui-accordion-open-value='true']>svg]:rotate-180">
+      <%= trigger %>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" 
+           width="24" 
+           height="24" 
+           viewBox="0 0 24 24" 
+           fill="none" 
+           stroke="currentColor" 
+           stroke-width="2" 
+           stroke-linecap="round" 
+           stroke-linejoin="round" 
+           class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200">
+        <path d="m6 9 6 6 6-6"></path>
+      </svg>
+    </button>
+  </h3>
+
+  <div 
+      data-ui-accordion-target="content"
+      hidden 
+      role="region" 
+      aria-labelledby="radix-:rpb:" 
+      data-orientation="vertical" 
+      class="overflow-hidden text-sm transition-all data-[ui-accordion-open-value='false']:animate-accordion-up data-[ui-accordion-open-value='true']:animate-accordion-down">
+    <%= content %>
+  </div>
+  
+</div>

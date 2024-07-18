@@ -1,0 +1,23 @@
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Indeterminate Progress")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Progress::Component.new) %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Determinate Progress")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Progress::Component.new(value: 33)) %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Custom Width Progress")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Progress::Component.new(value: 66, width: '80%')) %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Custom Max Progress")) do |component| %>
+  <% component.with_example do %>
+    <%= render(RailsUi::Progress::Component.new(value: 40, max: 200)) %>
+  <% end %>
+<% end %>

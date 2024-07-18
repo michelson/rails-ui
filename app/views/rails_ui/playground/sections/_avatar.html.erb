@@ -1,0 +1,18 @@
+
+      <%= render(RailsUi::ComponentPreview::Component.new(title: "Avatar with Image")) do |component| %>
+        <% component.with_example do %>
+          <%= render(RailsUi::Avatar::Component.new(src: 'https://github.com/shadcn.png', alt: '@shadcn')) %>
+        <% end %>
+      <% end %>
+
+      <%= render(RailsUi::ComponentPreview::Component.new(title: "Avatar with Fallback")) do |component| %>
+        <% component.with_example do %>
+          <%= render(RailsUi::Avatar::Component.new(alt: 'John Doe')) %>
+        <% end %>
+      <% end %>
+
+      <%= render(RailsUi::ComponentPreview::Component.new(title: "Large Avatar")) do |component| %>
+        <% component.with_example do %>
+          <%= render(RailsUi::Avatar::Component.new(src: 'https://github.com/shadcn.png', alt: '@shadcn', size: :lg)) %>
+        <% end %>
+      <% end %>

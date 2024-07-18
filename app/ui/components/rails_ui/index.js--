@@ -1,0 +1,11 @@
+import controllers from "./**/*index.js"
+
+controllers.forEach((controller) => {
+  if(controller.module.default){
+    const name = controller.name.replace("--index.js", "")
+    console.log("ADDINDG CONTROLLER FROM RAILS UI", name)
+    application.register(name, controller.module.default);
+  }
+});
+
+console.log(application)
