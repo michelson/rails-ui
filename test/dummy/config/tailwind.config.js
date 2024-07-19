@@ -12,8 +12,8 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
-    path.join(__dirname, '../../../app/ui/**/*.{erb,rb,html.erb}'),
-    path.join(__dirname, '../../../app/views/**/*.{erb,rb,html.erb}'),
+    path.join(__dirname, '../../../app/ui/**/*.{erb,rb,html.erb,js}'),
+    path.join(__dirname, '../../../app/views/**/*.{erb,rb,html.erb,js}'),
     '/Users/michelson/Documents/cience/rails_ui/app/ui/**/*.{erb,rb,html.erb}',
   ],
   theme: {

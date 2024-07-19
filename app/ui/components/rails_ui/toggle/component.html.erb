@@ -1,0 +1,19 @@
+<div <%= stimulus_attributes.map { |k, v| "data-#{k.to_s.dasherize}=#{v}" }.join(' ') %>>
+  <button
+    type="button"
+    class="<%= base_classes %> <%= variant_classes %> <%= size_classes %> <%= @class %>"
+    aria-pressed="<%= pressed %>"
+    data-state="<%= state %>"
+    data-ui-toggle-target="button"
+    data-action="ui-toggle#toggle"
+    <%= "aria-label=\"#{aria_label}\"" if aria_label %>
+    <%= "disabled" if disabled %>
+  >
+    <% if icon %>
+      <%= icon %>
+    <% end %>
+    <% if text %>
+      <%= text %>
+    <% end %>
+  </button>
+</div>

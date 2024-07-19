@@ -1,0 +1,67 @@
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Toggle Component")) do |component| %>
+  <% component.with_example(title: "Default Toggle") do %>
+    <%= render(RailsUi::Toggle::Component.new(aria_label: "Toggle bold")) do |toggle| %>
+      <% toggle.with_icon do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bold h-4 w-4"><path d="M14 12a4 4 0 0 0 0-8H6v8"></path><path d="M15 20a4 4 0 0 0 0-8H6v8Z"></path></svg>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Toggle Component")) do |component| %>
+
+  <% component.with_example(title: "Outline Toggle") do %>
+    <%= render(RailsUi::Toggle::Component.new(variant: :outline, aria_label: "Toggle italic")) do |toggle| %>
+      <% toggle.with_icon do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-italic h-4 w-4"><line x1="19" x2="10" y1="4" y2="4"></line><line x1="14" x2="5" y1="20" y2="20"></line><line x1="15" x2="9" y1="4" y2="20"></line></svg>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Toggle Component")) do |component| %>
+
+  <% component.with_example(title: "Toggle with Text") do %>
+    <%= render(RailsUi::Toggle::Component.new(aria_label: "Toggle notifications")) do |toggle| %>
+      <% toggle.with_icon do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell h-4 w-4 mr-2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+      <% end %>
+      <% toggle.with_text do %>
+        Notifications
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Toggle Component")) do |component| %>
+
+  <% component.with_example(title: "Small Toggle") do %>
+    <%= render(RailsUi::Toggle::Component.new(size: :sm, aria_label: "Toggle underline")) do |toggle| %>
+      <% toggle.with_icon do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-underline h-4 w-4"><path d="M6 4v6a6 6 0 0 0 12 0V4"></path><line x1="4" x2="20" y1="20" y2="20"></line></svg>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Toggle Component")) do |component| %>
+
+  <% component.with_example(title: "Large Toggle") do %>
+    <%= render(RailsUi::Toggle::Component.new(size: :lg, aria_label: "Toggle strikethrough")) do |toggle| %>
+      <% toggle.with_icon do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-strikethrough h-4 w-4"><path d="M16 4H9a3 3 0 0 0-2.83 4"></path><path d="M14 12a4 4 0 0 1 0 8H6"></path><line x1="4" x2="20" y1="12" y2="12"></line></svg>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Toggle Component")) do |component| %>
+
+  <% component.with_example(title: "Disabled Toggle") do %>
+    <%= render(RailsUi::Toggle::Component.new(disabled: true, aria_label: "Toggle disabled")) do |toggle| %>
+      <% toggle.with_icon do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

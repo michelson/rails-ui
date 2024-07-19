@@ -1,0 +1,16 @@
+<div <%= data_attributes%> class="w-[350px] space-y-2 <%= @class %>">
+  <div class="flex items-center justify-between space-x-4 px-4">
+    <%= header %>
+    <%= trigger %>
+  </div>
+  
+  <% items.each do |item| %>
+    <div class="rounded-md border px-4 py-3 font-mono text-sm">
+      <%= item %>
+    </div>
+  <% end %>
+
+  <div data-ui-collapsible-target="content" class="hidden <%= content_class %>">
+    <%= collapsible_content %>
+  </div>
+</div>

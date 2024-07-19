@@ -1,0 +1,21 @@
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "With Image")) do |component| %>
+  <% component.with_example do %>
+    <%= render RailsUi::AspectRatio::Component.new(
+      ratio: 16.0 / 9.0,
+      image_src: "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80",
+      image_alt: "Photo by Drew Beamer"
+    ) %>
+  <% end %>    
+<% end %>
+
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "With content")) do |component| %>
+  <% component.with_example do %>
+    <%= render RailsUi::AspectRatio::Component.new(ratio: 4.0 / 3.0) do %>
+      <div class="flex items-center justify-center h-full">
+        <p>Custom content here</p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

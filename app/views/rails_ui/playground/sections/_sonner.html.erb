@@ -1,0 +1,33 @@
+
+<div class="fixed bottom-0 right-0">
+  <%= render RailsUi::Toast::Component.new %>
+</div>
+
+
+
+
+
+document.dispatchEvent(new CustomEvent('ui:toast', {
+  detail: {
+    title: 'Event has been created',
+    content: 'Your event was successfully created.',
+    type: 'success'
+  }
+}))
+
+
+
+def create
+  # ... your create logic ...
+  respond_to do |format|
+    format.turbo_stream do
+      render turbo_stream: turbo_stream.append("toasts", 
+        render(RailsUi::Toast::ToastItemComponent.new(
+          title: "Event has been created",
+          content: "Your event was successfully created.",
+          type: "success"
+        ))
+      )
+    end
+  end
+end

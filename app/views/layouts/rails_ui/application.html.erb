@@ -16,10 +16,10 @@
 </head>
 
 <body>
-
+  <%= render "menu" %>
   <div class="flex space-x-2">
     <%= render "nav" %>
-    <div class="p-4 flex-grow h-screen overflow-auto">
+    <div class="p-4 flex-grow h-screen overflow-auto bg-muted/40">
       <%= yield %>
     </div>
   </div>

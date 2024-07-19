@@ -1,0 +1,11 @@
+<div <%= data_attribute_string %> class="relative inline-block">
+  <div data-ui-tooltip-target="trigger">
+    <%= trigger %>
+  </div>
+  <div data-ui-tooltip-target="content" class="absolute z-50 hidden <%= @class %>">
+    <div class="bg-secondary text-secondary-foreground px-3 py-1.5 text-sm rounded-md shadow-md">
+      <%= content %>
+    </div>
+    <div data-ui-tooltip-target="arrow" class="absolute bg-secondary w-2 h-2 rotate-45"></div>
+  </div>
+</div>
