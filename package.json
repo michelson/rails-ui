@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "build": "cd test/dummy && npm install && bin/rails tailwindcss:build && bin/rails assets:precompile",
-    "heroku-postbuild": "npm run build"
+    "build": "cd test/dummy && yarn install && bin/rails tailwindcss:build && bin/rails assets:precompile",
+    "heroku-postbuild": "yarn build"
   },
+  "packageManager": "yarn@4.1.1",
   "engines": {
     "node": "20.x"
   }
