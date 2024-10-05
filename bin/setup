@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+# Navigate to the dummy app and install npm packages
+npm --prefix ./test/dummy install
+
+# Install Ruby gems
+bundle install
