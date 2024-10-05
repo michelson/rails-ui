@@ -22,10 +22,14 @@
       <p class="text-sm text-muted-foreground"><%= description %></p>
     </div>
     <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
-      
 
-      <%= render(RailsUi::Button::Component.new(variant: :outline, size: :sm, data: {action: "ui-dialog#cancel" } )) { "cancel_text" } %>
-      <%= render(RailsUi::Button::Component.new(variant: :default, size: :sm, data: {action: "ui-dialog#close" } )) { "action_text"} %>
+      <%= render(RailsUi::Button::Component.new(variant: :outline, size: :sm, data: {action: "ui-dialog#cancel" } )) do %>
+        <%= cancel_text %>
+      <% end %>
+
+      <%= render(RailsUi::Button::Component.new(variant: :default, size: :sm, data: {action: "ui-dialog#close" } )) do %>
+        <%= action_text %>
+      <% end %>
 
     </div>
   </div>

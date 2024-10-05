@@ -1,19 +1,45 @@
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Sonner")) do |component| %>
+  <% component.with_example do %>
+    <%= render RailsUi::Toast::Component.new %>
+  <% end %>
 
-<div class="fixed bottom-0 right-0">
-  <%= render RailsUi::Toast::Component.new %>
-</div>
+  <% component.with_code do %>
+     render RailsUi::Toast::Component.new
+
+     run :
+
+     document.dispatchEvent(new CustomEvent('ui:toast', {
+      detail: {
+        title: 'Event has been created',
+        content: 'Your event was successfully created.',
+        type: 'success'
+      }
+    }))
+
+    or in the controller:
+
+
+    def create
+      # ... your create logic ...
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append("toasts", 
+            render(RailsUi::Toast::ToastItemComponent.new(
+              title: "Event has been created",
+              content: "Your event was successfully created.",
+              type: "success"
+            ))
+          )
+        end
+      end
+    end
+  <% end %>
+<% end %>
 
 
 
 
 
-document.dispatchEvent(new CustomEvent('ui:toast', {
-  detail: {
-    title: 'Event has been created',
-    content: 'Your event was successfully created.',
-    type: 'success'
-  }
-}))
 
 
 

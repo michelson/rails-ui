@@ -1,5 +1,3 @@
-import "./index.css"
-
 // app/javascript/controllers/ui_command_controller.js
 import { Controller } from "@hotwired/stimulus"
 import { useHotkeys } from 'stimulus-use/hotkeys'

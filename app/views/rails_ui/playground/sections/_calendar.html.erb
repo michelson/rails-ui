@@ -1,10 +1,13 @@
 
-<div class="w-60">
-  <%= render RailsUi::Calendar::Component.new(
-    format: "PPPP",
-    view_date: Date.today,
-    selected_date: Date.today,
-    input_id: "my-date-input"
-  ) %>
-
-</div>
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Avatar with Image")) do |component| %>
+  <% component.with_example do %>
+    <div class="w-60">
+      <%= render RailsUi::Calendar::Component.new(
+        format: "PPPP",
+        view_date: Date.today,
+        selected_date: Date.today,
+        input_id: "my-date-input"
+      ) %>
+    </div>
+  <% end %>
+<% end %>

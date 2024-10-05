@@ -15,10 +15,10 @@
 
 </head>
 
-<body>
-  <%= render "menu" %>
+<body data-controller="dark-mode">
+  <%= render "rails_ui/playground/menu" %>
   <div class="flex space-x-2">
-    <%= render "nav" %>
+    <%= render "rails_ui/playground/nav" %>
     <div class="p-4 flex-grow h-screen overflow-auto bg-muted/40">
       <%= yield %>
     </div>

@@ -26,6 +26,7 @@
            aria-controls="<%= id %>-list"
            aria-labelledby="<%= id %>-label"
            type="text"
+           data-action="ui-command#search"
            data-ui-command-target="input">
   </div>
   <div class="max-h-[300px] overflow-y-auto overflow-x-hidden"
@@ -56,14 +57,16 @@
                 <% end %>
                 <span><%= item[:label] %></span>
                 <% if item[:shortcut] %>
-                  <span class="ml-auto text-xs tracking-widest text-muted-foreground"><%= item[:shortcut] %></span>
+                  <span class="ml-auto text-xs tracking-widest text-muted-foreground">
+                    <%= item[:shortcut] %>
+                  </span>
                 <% end %>
               </div>
             <% end %>
           </div>
         </div>
         <% if section_index < sections.size - 1 %>
-          <div class="-mx-1 h-px bg-border" cmdk-separator="" role="separator"></div>
+          <%= render RailsUi::Separator::Component.new(class_name: "-mx-1 h-px bg-border my-0") %>
         <% end %>
       <% end %>
     </div>

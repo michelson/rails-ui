@@ -35,7 +35,7 @@
     { title: "Dropdown-Menu", type: "link"},
     { title: "Form", type: "link"},
     { title: "Hover Card", type: "link"},
-    { title: "Input", type: "link"},
+    # { title: "Input", type: "link"},
     { title: "Input OTP", type: "link"},
     { title: "Label", type: "link"},
     { title: "Menubar", type: "link"},
@@ -71,7 +71,8 @@
       <% if item[:type] == "link"%>
         <li class="text-xs">
           <%= link_to item[:title], playground_url(section: item[:title].parameterize.underscore), 
-            class: "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline text-muted-foreground" %>
+            class: "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline 
+            #{item[:title].parameterize.underscore == params[:section] ? "text-default" : "text-muted-foreground" }" %>
         </li>
       <% else %>
         <li>

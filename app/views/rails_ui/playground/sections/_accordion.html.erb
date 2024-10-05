@@ -1,5 +1,6 @@
 <%= render(RailsUi::ComponentPreview::Component.new(title: "Avatar with Image")) do |component| %>
   <% component.with_example do %>
+  
   <%= render RailsUi::Accordion::Component.new(type: "single", collapsible: true) do |accordion|
       accordion.with_item(value: "item-1") do |item|
         item.with_trigger { "Is it accessible?" }

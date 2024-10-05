@@ -1,0 +1,30 @@
+
+
+<div class="flex items-center">
+	<div data-controller="<%= identifier%>"
+		class="relative inline-block w-10 mr-2 align-middle
+		select-none transition duration-200 ease-in">
+
+		<input type="checkbox"
+			name="toggle"
+			id="<%= @id %>"
+			data-url="<%= @url %>"
+			<%= "checked=true" if @checked %>"
+			<%= "disabled=true" if @disabled %>"
+			data-action="change-><%= identifier%>#sendPutRequest"
+			class="toggle-checkbox absolute block w-6 h-6
+			rounded-full bg-default border-4 appearance-none cursor-pointer"
+		/>
+
+		<label for="toggle"
+			class="toggle-label block overflow-hidden h-6
+			rounded-full bg-emphasis cursor-pointer">
+		</label>
+	</div>
+
+	<% if  @label.present? %>
+		<label for="toggle" class="text-xs text-gray-700 dark:text-gray-100">
+			<%= @label %>
+		</label>
+	<% end %>
+</div>
