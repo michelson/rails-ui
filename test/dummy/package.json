@@ -36,6 +36,7 @@
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
   },
   "scripts": {
-    "build": "node esbuild.config.mjs --watch"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build_dev": "node esbuild.config.mjs --watch"
   }
 }
