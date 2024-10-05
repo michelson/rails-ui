@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "SKIP_YARN_INSTALL=true && cd test/dummy && npm install && bin/rails tailwindcss:build && bin/rails assets:precompile",
+    "build": "cd test/dummy && npm install && SKIP_YARN_INSTALL=true bin/rails assets:precompile --trace",
     "heroku-postbuild": "npm run build"
   },
   "packageManager": "npm",
