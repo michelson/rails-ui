@@ -6,7 +6,7 @@ gemspec
 
 gem "puma"
 
-gem "sqlite3", "2.0.2"
+# gem "sqlite3", "2.0.2"
 gem "pg"
 gem "pry"
 
