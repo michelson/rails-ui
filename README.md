@@ -21,8 +21,7 @@ Or install it yourself as:
 $ gem install rails_ui
 ```
 
-
-cd /test/dummy
+## Run development mode
 
 ./bin/dev
 
