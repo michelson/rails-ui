@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "build": "cd test/dummy && yarn build && bin/rails tailwindcss:build",
+    "heroku-postbuild": "yarn build"
+  }
+}

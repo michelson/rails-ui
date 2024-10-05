@@ -1,3 +1,4 @@
 web: cd test/dummy && bin/rails server -p 3000 -b 0.0.0.0
 css: cd test/dummy && bin/rails tailwindcss:watch
 js: cd test/dummy && yarn build --watch
+release: cd test/dummy && RAILS_ENV=production yarn install && bin/rails assets:precompile
