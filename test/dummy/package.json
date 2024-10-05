@@ -5,6 +5,7 @@
     "@floating-ui/dom": "^1.6.7",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
+    "@rails/activestorage": "^7.2.100",
     "@rails/request.js": "^0.0.11",
     "date-fns": "^3.6.0",
     "el-transition": "^0.0.7",
@@ -13,12 +14,28 @@
     "hotkeys-js": "^3.13.7",
     "interactjs": "^1.10.27",
     "popper": "^1.0.1",
-    "stimulus-use": "^0.52.2"
+    "stimulus-use": "^0.52.2",
+
+
+    "@tiptap/extension-code": "^2.0.3",
+    "@tiptap/extension-code-block-lowlight": "^2.0.3",
+    "@tiptap/extension-floating-menu": "^2.0.3",
+    "@tiptap/extension-focus": "^2.0.3",
+    "@tiptap/extension-link": "^2.0.3",
+    "@tiptap/extension-list-item": "^2.0.3",
+    "@tiptap/extension-ordered-list": "^2.0.3",
+    "@tiptap/extension-task-item": "^2.0.3",
+    "@tiptap/extension-task-list": "^2.0.3",
+    "@tiptap/extension-text-style": "^2.0.3",
+    "@tiptap/pm": "^2.0.3",
+    "@tiptap/extension-image": "^2.6.6",
+    "@tiptap/html": "^2.0.3",
+    "@tiptap/starter-kit": "^2.0.3"
   },
   "scripts_old": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
   },
   "scripts": {
-    "build": "node esbuild.config.mjs"
+    "build": "node esbuild.config.mjs --watch"
   }
 }

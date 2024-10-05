@@ -1,0 +1,27 @@
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Simple editor")) do |component| %>
+  <% component.with_example do %>
+
+    <%= form_with url: "/submit", local: true, html: {class: "w-full"} do |form| %>
+      <div class="form-group">
+        <% # form.label :body, "Body" %>
+        <%= render RailsUi::SimpleEditor::Component.new(
+              form: form,
+              field: :body,
+              preview_id: "editor-preview",
+              variables: { title: "Title", content: "Content" },
+              height: "h-96",
+              data: { custom: "value" }
+            ) %>
+      </div>
+      
+      <div class="form-group">
+        <%= form.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+  <% end %>
+
+  <% component.with_code do %>
+  
+  <% end %>
+<% end %>

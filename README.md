@@ -14,6 +14,21 @@ RailsUi is currently in alpha, and the components are designed to be copied dire
 
 > A direct integration can be done too, docs coming soon, in any case the ./test/dummy app is an example on how we integrate the components in an automatic way.
 
+## CLI, 
+> generator to copy the components will be available soon. But you call the components directly or by copy them after mount the app.
+
+## Mountable app.
+
+To get the catalog of components you can mount the app in your router:
+> mount RailsUi::Engine => "/rails_ui"
+
+
+## Tailwind support
+
+Check the [Tailwind config example from test app](https://github.com/michelson/rails-ui/blob/main/test/dummy/config/tailwind.config.js)
+
+
+
 ## Installation
 Add this line to your application's Gemfile:
 
@@ -77,7 +92,7 @@ To run the dummy app:
 ```
 
 ## Contributing
-Contribution directions go here.
+Feel free to use, fork and improve this project.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

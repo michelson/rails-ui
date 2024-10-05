@@ -3,7 +3,7 @@ const { fontFamily } = require("tailwindcss/defaultTheme")
 
 const path = require('path');
 
-console.log(fontFamily)
+// console.log(fontFamily)
 module.exports = {
   darkMode: 'class',
   content: [
@@ -12,9 +12,8 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
-    path.join(__dirname, '../../../app/ui/**/*.{erb,rb,html.erb,js}'),
-    path.join(__dirname, '../../../app/views/**/*.{erb,rb,html.erb,js}'),
-    '/Users/michelson/Documents/cience/rails_ui/app/ui/**/*.{erb,rb,html.erb,css,scss}',
+    path.join(__dirname, '../../../app/ui/**/*.{erb,rb,html.erb,js,css,scss}'),
+    path.join(__dirname, '../../../app/views/**/*.{erb,rb,html.erb,js,css,scss}'),
   ],
   theme: {
     container: {

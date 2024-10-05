@@ -6,7 +6,6 @@
 
 require "view_component"
 require "view_component/engine"
-require "pry"
 
 module RailsUi
   class Engine < ::Rails::Engine
