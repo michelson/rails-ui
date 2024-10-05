@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "cd test/dummy && npm install && bin/rails tailwindcss:build",
+    "build": "cd test/dummy && npm install && bin/rails tailwindcss:build && bin/rails assets:precompile",
     "heroku-postbuild": "npm run build"
   }
 }
