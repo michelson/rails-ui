@@ -1,4 +1,8 @@
 # frozen_string_literal: true
 
-class RailsUi::Markdown::Component < ApplicationViewComponent
+module RailsUi
+  module Markdown
+    class Component < ApplicationViewComponent
+    end
+  end
 end

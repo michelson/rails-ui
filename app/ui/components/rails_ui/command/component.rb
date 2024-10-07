@@ -5,7 +5,7 @@ module RailsUi
   module Command
     class Component < ApplicationViewComponent
       option :id, default: -> { SecureRandom.hex(6) }
-      option :placeholder, default: -> { "Type a command or search..." }
+      option :placeholder, default: -> { 'Type a command or search...' }
       option :sections, default: -> { [] }
     end
   end

@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
-class RailsUi::Carousel::Component < ApplicationViewComponent
-  option :items, default: -> { [] }
+module RailsUi
+  module Carousel
+    class Component < ApplicationViewComponent
+      option :items, default: -> { [] }
+    end
+  end
 end

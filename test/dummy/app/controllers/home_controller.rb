@@ -1,4 +1,5 @@
-class HomeController < ApplicationController
+# frozen_string_literal: true
 
-  layout "application"
+class HomeController < ApplicationController
+  layout 'application'
 end
