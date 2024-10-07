@@ -14,6 +14,9 @@ module RailsUi
     config.autoload_paths << root.join('app', 'ui', 'components')
 
     config.view_component.preview_paths << root.join("app/ui")
+    # config.view_component.preview_route = "/rails_ui/previews"
+
+
     #config.autoload_paths << root.join("app/ui")
 
     initializer "rails_ui.assets.precompile" do |app|

@@ -1,6 +1,6 @@
 
 
-<%= render(RailsUi::ComponentPreview::Component.new(title: "Example button")) do |component| %>
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Searator")) do |component| %>
   <% component.with_example do %>
     <div>
       <div class="space-y-1">
@@ -22,7 +22,23 @@
   <% end %>
 
   <% component.with_code do %>
-    example here
+    <div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-medium leading-none">Rails UI Primitives</h4>
+        <p class="text-sm text-muted-foreground">
+          An open-source UI component library.
+        </p>
+      </div>
+      <%%= render(RailsUi::Separator::Component.new(class_name: "my-4")) %>
+      <div class="flex h-5 items-center space-x-4 text-sm">
+        <div>Blog</div>
+        <%%= render(RailsUi::Separator::Component.new(orientation: "vertical")) %>
+        <div>Docs</div>
+        <%%= render(RailsUi::Separator::Component.new(orientation: "vertical")) %>
+        <div>Source</div>
+      </div>
+    </div>
+
   <% end %>
 <% end %>
 

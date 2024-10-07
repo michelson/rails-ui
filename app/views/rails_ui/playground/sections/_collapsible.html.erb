@@ -30,4 +30,38 @@
       <% end %>
     <% end %>
   <% end %>
+
+
+
+  <% component.with_code(title: "Default Collapsible") do %>
+    <%%= render(RailsUi::Collapsible::Component.new) do |collapsible| %>
+      <%% collapsible.with_header do %>
+        <h4 class="text-sm font-semibold">@peduarte starred 3 repositories</h4>
+      <%% end %>
+
+      <%% collapsible.with_trigger do %>
+        <%%= render(RailsUi::Button::Component.new(variant: :ghost, size: :sm, class: "w-9 p-0", data: { action: "ui-collapsible#toggle" })) do |button| %>
+          <%% button.with_icon do %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="m7 15 5 5 5-5"></path><path d="m7 9 5-5 5 5"></path></svg>
+          <%% end %>
+          <span class="sr-only">Toggle</span>
+        <%% end %>
+      <%% end %>
+
+      <%% collapsible.with_item do %>
+        @radix-ui/primitives
+      <%% end %>
+
+      <%% collapsible.with_collapsible_content do %>
+        <div class="space-y-2">
+          <div class="rounded-md border px-4 py-3 font-mono text-sm">
+            @radix-ui/colors
+          </div>
+          <div class="rounded-md border px-4 py-3 font-mono text-sm">
+            @stitches/react
+          </div>
+        </div>
+      <%% end %>
+    <%% end %>
+  <% end %>
 <% end %>

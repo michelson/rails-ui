@@ -1,7 +1,3 @@
-
-
-
-
 <%= render(RailsUi::ComponentPreview::Component.new(title: "Popover Examples")) do |component| %>
   <% component.with_example(title: "Default Popover (Click Trigger)") do %>
     <%= render RailsUi::Popover::Component.new do |popover| %>
@@ -17,6 +13,24 @@
         <p>This is a basic popover with default settings.</p>
       </div>
     <% end %>
+  <% end %>
+
+  <% component.with_code do %>
+
+    <%%= render RailsUi::Popover::Component.new do |popover| %>
+      <%% popover.with_trigger do %>
+        <%%= render(RailsUi::Button::Component.new(
+          variant: :default, size: :default, data: {action: "click->ui-popover#toggle", "ui-popover-target": "trigger"})) { 
+          "Default Button" 
+        } %>
+      <%% end %>
+
+      <div class="p-4">
+        <h3 class="text-lg font-bold mb-2">Default Popover</h3>
+        <p>This is a basic popover with default settings.</p>
+      </div>
+    <%% end %>
+
   <% end %>
 <% end %>
 
@@ -38,6 +52,24 @@
       </div>
     <% end %>
   <% end %>
+
+  <% component.with_code do %>
+
+    <%%= render RailsUi::Popover::Component.new(trigger_type: 'hover') do |popover| %>
+      <%% popover.with_trigger do %>
+         <%%= render(RailsUi::Button::Component.new(
+          variant: :default, size: :default, data: {action: "click->ui-popover#toggle", "ui-popover-target": "trigger"})) { 
+          "Default Button" 
+        } %>
+      <%% end %>
+     
+      <div class="p-4">
+        <h3 class="text-lg font-bold mb-2">Hover Popover</h3>
+        <p>This popover appears on hover.</p>
+      </div>
+    <%% end %>
+
+  <% end %>
 <% end %>
 
 <%= render(RailsUi::ComponentPreview::Component.new(title: "Popover Examples")) do |component| %>
@@ -55,6 +87,23 @@
         <p>This popover has an arrow pointing to its trigger.</p>
       </div>
     <% end %>
+  <% end %>
+
+  <% component.with_code do %>
+
+    <%%= render RailsUi::Popover::Component.new(arrow: true) do |popover| %>
+      <%% popover.with_trigger do %>
+        <%%= render(RailsUi::Button::Component.new(
+          variant: :default, size: :default, data: {action: "click->ui-popover#toggle", "ui-popover-target": "trigger"})) { 
+          "Default Button" 
+        } %>
+      <%% end %>
+      <div class="p-4">
+        <h3 class="text-lg font-bold mb-2">Arrow Popover</h3>
+        <p>This popover has an arrow pointing to its trigger.</p>
+      </div>
+    <%% end %>
+
   <% end %>
 <% end %>
 
@@ -74,6 +123,23 @@
       </div>
     <% end %>
   <% end %>
+
+  <% component.with_code do %>
+
+    <%%= render RailsUi::Popover::Component.new(placement: 'top', arrow: true) do |popover| %>
+      <%% popover.with_trigger do %>
+         <%%= render(RailsUi::Button::Component.new(
+          variant: :default, size: :default, data: {action: "click->ui-popover#toggle", "ui-popover-target": "trigger"})) { 
+          "Default Button" 
+        } %>
+      <%% end %>
+      <div class="p-4">
+        <h3 class="text-lg font-bold mb-2">Top Placement</h3>
+        <p>This popover appears above the trigger.</p>
+      </div>
+    <%% end %>
+
+  <% end %>
 <% end %>
 
 <%= render(RailsUi::ComponentPreview::Component.new(title: "Popover Examples")) do |component| %>
@@ -91,6 +157,23 @@
         <p>This popover has a larger offset from its trigger.</p>
       </div>
     <% end %>
+  <% end %>
+
+  <% component.with_code do %>
+
+    <%%= render RailsUi::Popover::Component.new(offset: 20) do |popover| %>
+      <%% popover.with_trigger do %>
+        <%%= render(RailsUi::Button::Component.new(
+          variant: :default, size: :default, data: {action: "click->ui-popover#toggle", "ui-popover-target": "trigger"})) { 
+          "Default Button" 
+        } %>
+      <%% end %>
+      <div class="p-4">
+        <h3 class="text-lg font-bold mb-2">Custom Offset</h3>
+        <p>This popover has a larger offset from its trigger.</p>
+      </div>
+    <%% end %>
+
   <% end %>
 <% end %>
 
@@ -119,5 +202,32 @@
       </div>
       
     <% end %>
+  <% end %>
+
+  <% component.with_code do %>
+
+    <%%= render RailsUi::Popover::Component.new(arrow: true, placement: 'right') do |popover| %>
+      <%% popover.with_trigger do %>
+         <%%= render(RailsUi::Button::Component.new(
+          variant: :default, size: :default, data: {action: "click->ui-popover#toggle", "ui-popover-target": "trigger"})) { 
+          "Default Button" 
+        } %>
+      <%% end %>
+      
+      <div class="p-4">
+        <h3 class="text-lg font-bold mb-2">Rich Content Example</h3>
+        <p class="mb-2">This popover contains more complex content:</p>
+        <ul class="list-disc list-inside">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
+        <button class="mt-2 px-2 py-1 bg-indigo-500 text-white rounded">
+          Action Button
+        </button>
+      </div>
+      
+    <%% end %>
+
   <% end %>
 <% end %>

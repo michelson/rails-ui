@@ -7,4 +7,18 @@
     <!-- % || !lookup_context.template_exists?("playground/sections/_#{@section}", [], true) -->
     <p>No content available for this section.</p>
   <% end %>
+
+  <div class="flex justify-between">
+    <%= render(RailsUi::Button::Component.new(variant: :outline, size: :sm)) do  %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+      Previous
+
+    <% end %>
+
+    <%= render(RailsUi::Button::Component.new(variant: :outline, size: :sm)) do %>
+      Next
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+    <% end %>
+
+  </div>
 </div>

@@ -1,4 +1,49 @@
-<%= render RailsUi::Menubar::Component.new(items: [
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Default Button")) do |component| %>
+  <% component.with_example do %>
+    <%= render RailsUi::Menubar::Component.new(items: [
+      {
+        label: "File",
+        submenu: [
+          { label: "New", shortcut: "⌘N" },
+          { label: "Open", shortcut: "⌘O" },
+          :separator,
+          { label: "Save", shortcut: "⌘S" },
+          { label: "Save As", shortcut: "⇧⌘S" }
+        ]
+      },
+      {
+        label: "Edit",
+        submenu: [
+          { label: "Undo", shortcut: "⌘Z" },
+          { label: "Redo", shortcut: "⇧⌘Z" },
+          :separator,
+          { label: "Cut" },
+          { label: "Copy" },
+          { label: "Paste" },
+          {
+            label: "Find",
+            submenu: [
+              { label: "Search the web" },
+              { label: "Find..." },
+              { label: "Find Next" },
+              { label: "Find Previous" }
+            ]
+          }
+        ]
+      },
+      {
+        label: "View",
+        submenu: [
+          { label: "Zoom In", shortcut: "⌘+" },
+          { label: "Zoom Out", shortcut: "⌘-" },
+          { label: "Reset Zoom", shortcut: "⌘0" }
+        ]
+      }
+    ]) %>
+  <% end %>
+
+  <% component.with_code do %>
+<%%= render RailsUi::Menubar::Component.new(items: [
   {
     label: "File",
     submenu: [
@@ -38,3 +83,5 @@
     ]
   }
 ]) %>
+  <% end %>
+<% end %>

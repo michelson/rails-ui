@@ -16,6 +16,7 @@ gem "view_components"
 gem "view_component-contrib"
 
 gem "tailwindcss-rails"
+gem "turbo-rails", github: "hotwired/turbo-rails", branch: "main"
 
 group :development do
   gem "web-console", ">= 3.3.0"

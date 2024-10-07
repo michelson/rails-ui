@@ -32,4 +32,41 @@
       </div>
     <% end %>
   <% end %>
+
+
+
+
+  <% component.with_code(title: "Advanced Context Menu") do %>
+<%% menu_items = [
+      {
+        label: "File",
+        submenu: [
+          { label: "New", shortcut: "⌘N" },
+          { label: "Open", shortcut: "⌘O" },
+          { type: :separator },
+          { label: "Save", shortcut: "⌘S" },
+          { label: "Save As", shortcut: "⇧⌘S" }
+        ]
+      },
+      {
+        label: "Edit",
+        submenu: [
+          { label: "Undo", shortcut: "⌘Z" },
+          { label: "Redo", shortcut: "⇧⌘Z" },
+          { type: :separator },
+          { label: "Cut", shortcut: "⌘X" },
+          { label: "Copy", shortcut: "⌘C" },
+          { label: "Paste", shortcut: "⌘V" }
+        ]
+      },
+      { type: :separator },
+      { label: "Print", shortcut: "⌘P" }
+    ] %>
+
+    <%%= render(RailsUi::ContextMenu::Component.new(menu_items: menu_items)) do %>
+      <div class="p-4 border rounded">
+        Right-click here
+      </div>
+    <%% end %>
+  <% end %>
 <% end %>

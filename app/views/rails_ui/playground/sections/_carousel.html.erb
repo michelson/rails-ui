@@ -8,4 +8,15 @@
       '<span class="text-4xl font-semibold">5</span>'
     ])) %>
   <% end %>
+
+
+  <% component.with_code do %>
+    <%%= render(RailsUi::Carousel::Component.new(items: [
+      '<span class="text-4xl font-semibold">1</span>',
+      '<span class="text-4xl font-semibold">2</span>',
+      '<span class="text-4xl font-semibold">3</span>',
+      '<span class="text-4xl font-semibold">4</span>',
+      '<span class="text-4xl font-semibold">5</span>'
+    ])) %>
+  <% end %>
 <% end %>

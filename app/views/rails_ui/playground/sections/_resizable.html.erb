@@ -1,5 +1,5 @@
 
-<%= render(RailsUi::ComponentPreview::Component.new(title: "Default Button")) do |component| %>
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Default")) do |component| %>
   <% component.with_example do %>
     <%= render RailsUi::Resizable::Component.new(
       direction: "horizontal",
@@ -27,14 +27,36 @@
   <% end %>
 
   <% component.with_code do %>
-    ...
+    <%%= render RailsUi::Resizable::Component.new(
+      direction: "horizontal",
+      panels: [
+        {
+          defaultSize: 50,
+          content: "One"
+        },
+        {
+          defaultSize: 50,
+          direction: "vertical",
+          children: [
+            {
+              defaultSize: 25,
+              content: "Two"
+            },
+            {
+              defaultSize: 75,
+              content: "Three"
+            }
+          ]
+        }
+      ]
+    ) %>
   <% end %>
 <% end %>
 
 
 
 
-<%= render(RailsUi::ComponentPreview::Component.new(title: "Default Button")) do |component| %>
+<%= render(RailsUi::ComponentPreview::Component.new(title: "sizes")) do |component| %>
   <% component.with_example do %>
     <%= render RailsUi::Resizable::Component.new(
       direction: "horizontal",
@@ -52,7 +74,59 @@
   <% end %>
 
   <% component.with_code do %>
-    ...
+    <%%= render RailsUi::Resizable::Component.new(
+      direction: "horizontal",
+      panels: [
+        {
+          defaultSize: 31.7,
+          content: "Sidebar"
+        },
+        {
+          defaultSize: 68.3,
+          content: "Content"
+        }
+      ]
+    ) %>
+  <% end %>
+<% end %>
+
+
+
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Custom render")) do |component| %>
+  <% component.with_example do %>
+    <%= render RailsUi::Resizable::Component.new(
+      direction: "horizontal",
+      panels: [
+        {
+          defaultSize: 31.7,
+          content: -> {
+            "<p class='text-red-300'>red!</p>"
+          }
+        },
+        {
+          defaultSize: 68.3,
+          content: "Content"
+        }
+      ]
+    ) %>
+  <% end %>
+
+  <% component.with_code do %>
+    <%%= render RailsUi::Resizable::Component.new(
+      direction: "horizontal",
+      panels: [
+        {
+          defaultSize: 31.7,
+          content: -> {
+            "<p class='text-red-300'>red!</p>"
+          }
+        },
+        {
+          defaultSize: 68.3,
+          content: "Content"
+        }
+      ]
+    ) %>
   <% end %>
 <% end %>
 

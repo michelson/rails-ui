@@ -3,11 +3,19 @@
   <% component.with_example do %>
     <%= render(RailsUi::Skeleton::Component.new) %>
   <% end %>
+
+  <% component.with_code do %>
+    <%%= render(RailsUi::Skeleton::Component.new) %>
+  <% end %>
 <% end %>
 
 <%= render(RailsUi::ComponentPreview::Component.new(title: "Card Skeleton")) do |component| %>
   <% component.with_example do %>
     <%= render(RailsUi::Skeleton::Component.new(variant: :card)) %>
+  <% end %>
+
+  <% component.with_code do %>
+    <%%= render(RailsUi::Skeleton::Component.new(variant: :card)) %>
   <% end %>
 <% end %>
 
@@ -19,11 +27,29 @@
       line_widths: ['300px', '250px', '200px']
     )) %>
   <% end %>
+
+   <% component.with_code do %>
+    <%= render(RailsUi::Skeleton::Component.new(
+      avatar_size: 'h-16 w-16',
+      lines: 3,
+      line_widths: ['300px', '250px', '200px']
+    )) %>
+  <% end %>
 <% end %>
 
 <%= render(RailsUi::ComponentPreview::Component.new(title: "Custom Card Skeleton")) do |component| %>
   <% component.with_example do %>
     <%= render(RailsUi::Skeleton::Component.new(
+      variant: :card,
+      card_size: 'h-[150px] w-[300px]',
+      lines: 4,
+      line_widths: ['300px', '280px', '260px', '240px']
+    )) %>
+  <% end %>
+
+
+  <% component.with_code do %>
+    <%%= render(RailsUi::Skeleton::Component.new(
       variant: :card,
       card_size: 'h-[150px] w-[300px]',
       lines: 4,

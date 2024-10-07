@@ -1,0 +1,5 @@
+<%= render RailsUi::Markdown::Component.new do %>
+  <div data-ui-markdown-target="content" class="prose dark:prose-invert">
+    <%= File.open(RailsUi::Engine.root.join "CHANGELOG.md").read %>
+  </div>
+<% end %>

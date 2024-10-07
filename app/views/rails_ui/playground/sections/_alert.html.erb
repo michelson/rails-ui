@@ -1,4 +1,4 @@
-      <%= render(RailsUi::ComponentPreview::Component.new(title: "Avatar with Image")) do |component| %>
+      <%= render(RailsUi::ComponentPreview::Component.new(title: "Alert")) do |component| %>
         <% component.with_example do %>
           <%= render(RailsUi::Alert::Component.new(icon: :terminal)) do |c|
               c.with_title { 'Heads up!' }
@@ -6,14 +6,30 @@
             end 
           %>
         <% end %>
+
+        <% component.with_code do %>
+<%%= render(RailsUi::Alert::Component.new(icon: :terminal)) do |c|
+    c.with_title { 'Heads up!' }
+  'You can add components to your app using the cli.'
+  end 
+%>
+        <% end %>
       <% end %>
 
-      <%= render(RailsUi::ComponentPreview::Component.new(title: "Avatar with Image")) do |component| %>
+      <%= render(RailsUi::ComponentPreview::Component.new(title: "Alert Error")) do |component| %>
         <% component.with_example do %>
           <%= render(RailsUi::Alert::Component.new(variant: :destructive, icon: :alert)) do |c|
             c.with_title { 'Error' }
             'Your session has expired. Please log in again.'
             end
           %>
+        <% end %>
+
+        <% component.with_code do %>
+<%%= render(RailsUi::Alert::Component.new(variant: :destructive, icon: :alert)) do |c|
+  c.with_title { 'Error' }
+  'Your session has expired. Please log in again.'
+  end
+%>
         <% end %>
       <% end %>

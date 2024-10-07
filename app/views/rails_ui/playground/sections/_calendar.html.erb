@@ -10,4 +10,14 @@
       ) %>
     </div>
   <% end %>
+
+
+  <% component.with_code do %>
+<%%= render RailsUi::Calendar::Component.new(
+  format: "PPPP",
+  view_date: Date.today,
+  selected_date: Date.today,
+  input_id: "my-date-input"
+) %>
+  <% end %>
 <% end %>

@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/hotwired/turbo-rails.git
+  revision: b775fe4a1f9db28e3d650864c1bb6c089f44efa6
+  branch: main
+  specs:
+    turbo-rails (2.0.10)
+      actionpack (>= 6.0.0)
+      railties (>= 6.0.0)
+
 PATH
   remote: .
   specs:
@@ -232,6 +241,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails (~> 1.3)
   tailwindcss-rails
+  turbo-rails!
   view_component-contrib
   view_components
   web-console (>= 3.3.0)

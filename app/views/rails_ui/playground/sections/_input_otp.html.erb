@@ -1,4 +1,19 @@
-<%= render RailsUi::InputOtp::Component.new(
+<%= render(RailsUi::ComponentPreview::Component.new(title: "Default Button")) do |component| %>
+  <% component.with_example do %>
+    <%= render RailsUi::InputOtp::Component.new(
+      groups: [3, 3],  # Two groups of 3 digits
+      separator: true,
+      input_mode: "numeric",
+      pattern: "^\\d+$",
+      autocomplete: "one-time-code",
+      disabled: false
+    ) %>
+
+  <% end %>
+
+  <% component.with_code do %>
+
+<%%= render RailsUi::InputOtp::Component.new(
   groups: [3, 3],  # Two groups of 3 digits
   separator: true,
   input_mode: "numeric",
@@ -6,3 +21,5 @@
   autocomplete: "one-time-code",
   disabled: false
 ) %>
+  <% end %>
+<% end %>

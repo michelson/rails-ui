@@ -11,6 +11,17 @@
       Add to library
     <% end %>
   <% end %>
+
+
+  <% component.with_code do %>
+    <%%= render(RailsUi::Tooltip::Component.new(content: "This is a tooltip")) do |tooltip| %>
+      <%% tooltip.with_trigger do %>
+        <button class="px-4 py-2 bg-primary text-primary-foreground rounded">Hover me</button>
+      <%% end %>
+
+      Add to library
+    <%% end %>
+  <% end %>
 <% end %>
   
 <%= render(RailsUi::ComponentPreview::Component.new(title: "Tooltip Component")) do |component| %>
@@ -23,6 +34,16 @@
 
       Add to library
     <% end %>
+  <% end %>
+
+  <% component.with_code do %>
+    <%%= render(RailsUi::Tooltip::Component.new(content: "Right tooltip", placement: "right")) do |tooltip| %>
+      <%% tooltip.with_trigger do %>
+        <button class="px-4 py-2 bg-secondary text-secondary-foreground rounded">Hover for right tooltip</button>
+      <%% end %>
+
+      Add to library
+    <%% end %>
   <% end %>
 <% end %>
 
@@ -37,6 +58,17 @@
       Add to library
     <% end %>
   <% end %>
+
+
+  <% component.with_code do %>
+    <%%= render(RailsUi::Tooltip::Component.new(content: "Bottom tooltip with 1s delay", placement: "bottom", delay: 1000)) do |tooltip| %>
+      <%% tooltip.with_trigger do %>
+        <button class="px-4 py-2 bg-accent text-accent-foreground rounded">Hover for delayed tooltip</button>
+      <%% end %>
+
+      Add to library
+    <%% end %>
+  <% end %>
 <% end %>
 
 <%= render(RailsUi::ComponentPreview::Component.new(title: "Tooltip Component")) do |component| %>
@@ -49,5 +81,16 @@
 
       Add to library
     <% end %>
+  <% end %>
+
+
+  <% component.with_code do %>
+    <%%= render(RailsUi::Tooltip::Component.new(content: "Custom styled tooltip", placement: "left", class: "bg-destructive text-destructive-foreground")) do |tooltip| %>
+      <%% tooltip.with_trigger do %>
+        <button class="px-4 py-2 bg-muted text-muted-foreground rounded">Hover for custom tooltip</button>
+      <%% end %>
+
+      Add to library
+    <%% end %>
   <% end %>
 <% end %>

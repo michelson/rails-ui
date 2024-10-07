@@ -1,0 +1,40 @@
+<%= render RailsUi::Markdown::Component.new do %>
+  <div data-ui-markdown-target="content" class="prose dark:prose-invert">
+
+
+
+Here's an improved version of the documentation for dark mode functionality:
+
+---
+
+### Dark Mode Integration
+
+To enable dark mode in your application, add the following data attributes:
+
+1. **On the `<body>` tag**:
+   Use `data-controller="dark-mode"` to initialize the dark mode Stimulus controller on the body of your page.
+
+2. **On elements that should toggle dark mode**:
+   Use `data-action="click->dark-mode#toggle"` to attach the dark mode toggle functionality to any clickable element.
+
+This setup ensures that when the user clicks the element with the `data-action` attribute, the dark mode controller toggles the color scheme between light and dark. 
+
+For example:
+
+```html
+<body data-controller="dark-mode">
+  <button data-action="click->dark-mode#toggle">
+    Toggle Dark Mode
+  </button>
+  <div class="prose dark:prose-invert">
+    <!-- Your content goes here -->
+  </div>
+</body>
+```
+
+In this setup:
+- The `dark-mode` controller is responsible for adding or removing the appropriate CSS class on the `<body>`.
+- The button uses the `click->dark-mode#toggle` action to toggle between light and dark modes on user interaction.
+
+  </div>
+<% end %>

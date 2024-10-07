@@ -1,0 +1,35 @@
+<div class="border rounded-lg overflow-hidden my-2">
+  <h3 class="bg-muted px-4 py-2 font-semibold">
+    <%= title %>
+  </h3>
+  
+
+  <%= render RailsUi::Resizable::Component.new(
+      direction: "horizontal",
+      panels: [
+        {
+          defaultSize: 50,
+          content: -> {
+"<div class='p-4 w-full'>
+  #{example}
+</div>"
+          }
+        },
+        {
+          defaultSize: 50,
+          content: -> {
+"<pre class='language-erb bg-black text-white h-full w-full border-subtle'>
+  #{render_code}
+</pre>"
+          }
+        }
+      ]
+    ) 
+  %>
+
+  
+  <!--<div class="flex flex-col md:flex-row">
+    <div class="w-full md:w-1/2 p-4">
+    </div>
+  </div>-->
+</div>

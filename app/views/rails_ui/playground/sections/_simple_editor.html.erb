@@ -15,13 +15,30 @@
       </div>
       
       <div class="form-group">
-        <%= form.submit "Submit", class: "btn btn-primary" %>
+        <% form.submit "Submit", class: "btn btn-primary" %>
       </div>
     <% end %>
 
   <% end %>
 
   <% component.with_code do %>
-  
+
+    <%%= form_with url: "/submit", local: true, html: {class: "w-full"} do |form| %>
+      <div class="form-group">
+        <%%= render RailsUi::SimpleEditor::Component.new(
+              form: form,
+              field: :body,
+              preview_id: "editor-preview",
+              variables: { title: "Title", content: "Content" },
+              height: "h-96",
+              data: { custom: "value" }
+            ) %>
+      </div>
+      
+      <div class="form-group">
+        <%%= form.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    <%% end %>
+
   <% end %>
 <% end %>

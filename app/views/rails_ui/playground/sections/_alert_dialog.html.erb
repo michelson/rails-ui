@@ -25,6 +25,25 @@
   <% end %>
 
   <% component.with_code do %>
-    
+
+
+    <%%= render RailsUi::AlertDialog::Component.new(
+      title: "Are you absolutely sure?",
+      description: "This action cannot be undone. This will permanently delete your account and remove your data from our servers.",
+      cancel_text: "Cancel",
+      action_text: "Delete Account",
+      on_cancel: "click->some-controller#cancelAction",
+      on_action: "click->some-controller#deleteAccount",
+      close_on_click_outside: true
+    ) do |c| %>
+      <%% c.with_trigger do |t| %>
+        <%%= button_tag "Delete Account", 
+                      type: "button", 
+                      class: "px-4 py-2 bg-red-500 text-white rounded",
+                      data: {action: "click->ui-alert-dialog#open"} %>
+      <%% end %>
+    <%% end %>
+
+
   <% end %>
 <% end %>

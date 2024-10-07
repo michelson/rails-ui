@@ -9,6 +9,18 @@
       <p>Tab content goes here.</p>
     <% end %>
   <% end %>
+
+
+  <% component.with_code do %>
+    <%%= render(RailsUi::Tabs::Component.new(
+      items: [
+        { label: 'Account', active: true },
+        { label: 'Password', active: false }
+      ]
+    )) do |tabs| %>
+      <p>Tab content goes here.</p>
+    <%% end %>
+  <% end %>
 <% end %>
 
 <%= render(RailsUi::ComponentPreview::Component.new(title: "Nav-style Tabs")) do |component| %>
@@ -27,5 +39,22 @@
         <p>Tab content loaded via Turbo Frame</p>
       </turbo-frame>
     <% end %>
+  <% end %>
+
+  <% component.with_code do %>
+    <%%= render(RailsUi::Tabs::Component.new(
+      variant: :nav,
+      items: [
+        { label: 'My Account', href: '#account', active: true },
+        { label: 'Company', href: '#company', active: false },
+        { label: 'Team Members', href: '#team', active: false },
+        { label: 'Billing', href: '#billing', active: false }
+      ],
+      turbo_frame: 'tab_content'
+    )) do |tabs| %>
+      <turbo-frame id="tab_content">
+        <p>Tab content loaded via Turbo Frame</p>
+      </turbo-frame>
+    <%% end %>
   <% end %>
 <% end %>
