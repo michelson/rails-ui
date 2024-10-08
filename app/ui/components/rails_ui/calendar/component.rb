@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'date'
+require "date"
 
 module RailsUi
   module Calendar
@@ -8,7 +8,7 @@ module RailsUi
       option :id, default: -> { SecureRandom.hex(6) }
       option :format, default: -> { "PPPP" }
       option :view_date, default: -> { Date.today }
-      option :selected_date, default: -> { nil }
+      option :selected_date, default: -> {}
       option :input_id, default: -> { "formatted-date" }
 
       def weekdays

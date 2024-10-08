@@ -13,8 +13,7 @@ class RailsUi::Separator::Component < ApplicationViewComponent
   # Provides the CSS class for the separator
   def separator_class
     base_class = "shrink-0 bg-border"
-    orientation_class = @orientation == "vertical" ? "h-full w-[1px]" : "h-[1px] w-full my-4"
+    orientation_class = (@orientation == "vertical") ? "h-full w-[1px]" : "h-[1px] w-full my-4"
     [base_class, orientation_class, @class_name].compact.join(" ")
   end
 end
-

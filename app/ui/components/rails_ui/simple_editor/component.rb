@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RailsUi::SimpleEditor::Component < ApplicationViewComponent
-  option :preview_id, default: -> { nil }
+  option :preview_id, default: -> {}
   option :variables, default: -> { {} }
   option :height, default: -> { "h-20" }
   option :data

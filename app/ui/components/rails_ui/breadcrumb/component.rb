@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class RailsUi::Breadcrumb::Component < ApplicationViewComponent
-
   renders_many :items, RailsUi::BreadcrumbItem::Component
 
   def separator

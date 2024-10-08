@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# frozen_string_literal: true
-
 class RailsUi::Tooltip::Component < ApplicationViewComponent
   option :placement, default: -> { "top" }
   option :delay, default: -> { 700 }
@@ -18,6 +16,6 @@ class RailsUi::Tooltip::Component < ApplicationViewComponent
   end
 
   def data_attribute_string
-    data_attributes.map { |key, value| "data-#{key.to_s.dasherize}=#{value}" }.join(' ')
+    data_attributes.map { |key, value| "data-#{key.to_s.dasherize}=#{value}" }.join(" ")
   end
 end

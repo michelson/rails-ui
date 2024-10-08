@@ -4,6 +4,4 @@ class RailsUi::AccordionItem::Component < ApplicationViewComponent
   option :value
 
   renders_one :trigger
-
- 
 end
