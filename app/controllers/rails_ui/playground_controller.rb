@@ -5,10 +5,10 @@ module RailsUi
       @section = "accordion"
       render "show"
     end
-    
+
     def show
       @section = params[:section]
-      render 'show'
+      render "show"
     end
   end
 end

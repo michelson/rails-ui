@@ -1,5 +1,4 @@
 class RailsUi::ComponentPreview::Component < ViewComponent::Base
-
   renders_one :example
   renders_one :code
 

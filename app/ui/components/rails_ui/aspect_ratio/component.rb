@@ -5,12 +5,12 @@ module RailsUi
     class Component < ApplicationViewComponent
       option :ratio, default: -> { 16.0 / 9.0 }
       option :class_name, default: -> { "bg-muted" }
-      option :image_src, default: -> { nil }
-      option :image_alt, default: -> { nil }
+      option :image_src, default: -> {}
+      option :image_alt, default: -> {}
       option :image_class, default: -> { "rounded-md object-cover" }
 
       def call
-        content_tag :div, data: { "radix-aspect-ratio-wrapper": true }, style: wrapper_style do
+        content_tag :div, data: {"radix-aspect-ratio-wrapper": true}, style: wrapper_style do
           content_tag :div, class: class_name, style: "position: absolute; inset: 0px;" do
             if image_src
               image_tag image_src, alt: image_alt, class: image_class, style: image_style, loading: "lazy", decoding: "async"
