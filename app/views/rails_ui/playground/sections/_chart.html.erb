@@ -1,1 +1,165 @@
-_chart soon
+<div class="grid grid-cols-3 gap-3">
+
+  <%= render RailsUi::Card::Component.new(
+    title: "Area Chart - Stacked", 
+    description: "Showing total visitors for the last 6 months") do %>
+    <%= render RailsUi::Chart::Component.new(
+      config: '{
+          "responsive": true,
+          "plugins": {
+            "legend": {
+              "display": false
+            },
+            "tooltip": {
+              "mode": "index",
+              "intersect": false
+            }
+          },
+          "scales": {
+            "x": { 
+              "type": "category",
+              "grid": {
+                "drawBorder": true,
+                "display": true
+              }
+            },
+            "y": { 
+              "stacked": true,
+              "ticks": {
+                "display": false
+              },
+              "grid": {
+                "drawBorder": false,
+                "display": false
+              }
+            }
+          }
+        }',
+      data: '{
+        "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        "datasets": [
+          {
+            "label": "Mobile",
+            "backgroundColorssss": "getComputedStyle(document.documentElement).getPropertyValue(\'--destructive\')",
+            "backgroundColor": "rgba(255, 99, 132, 0.5)",
+            "borderColor": "rgba(255, 99, 132, 1)",
+            "fill": true,
+            "lineTension": 0.4,          
+            "data": [80, 200, 120, 190, 130, 140],
+            "pointRadius": 0,   
+            "pointHoverRadius": 5,
+            "borderWidth": 1
+          },
+          {
+            "label": "Desktop",
+            "backgroundColor": "rgba(54, 162, 235, 0.5)",
+            "borderColor": "rgba(54, 162, 235, 1)",
+            "fill": true,
+            "lineTension": 0.4,          
+            "data": [305, 400, 450, 350, 250, 150],
+            "pointRadius": 0,   
+            "pointHoverRadius": 5,
+            "borderWidth": 1
+          }
+        ]
+      }'
+      ) 
+    %>
+  <% end %>
+
+  <%= render RailsUi::Card::Component.new(
+    title: "Bar Chart - Multiple", 
+    description: "January - June 2024") do %>
+    <%= render RailsUi::Chart::Component.new(
+      type: "bar",
+      config: '{
+          "responsive": true,
+          "plugins": {
+            "legend": {
+              "display": false
+            },
+            "tooltip": {
+              "mode": "index",
+              "intersect": false
+            }
+          },
+          "scales": {
+            "x": { 
+              "type": "category",
+              "grid": {
+                "drawBorder": true,
+                "display": true
+              }
+            },
+            "y": { 
+              "stacked": false,
+              "ticks": {
+                "display": false,
+                "beginAtZero": true
+              },
+              "grid": {
+                "drawBorder": false,
+                "display": false
+              }
+            }
+          }
+        }',
+      data: '{
+        "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        "datasets": [
+          {
+            "label": "Mobile",
+            "backgroundColor": "rgba(255, 99, 132, 0.5)",
+            "borderColor": "rgba(255, 99, 132, 1)",        
+            "data": [80, 200, 120, 190, 130, 140],
+            "borderRadius": 4
+          },
+          {
+            "label": "Desktop",
+            "backgroundColor": "rgba(54, 162, 235, 0.5)",
+            "borderColor": "rgba(54, 162, 235, 1)",         
+            "data": [305, 400, 450, 350, 250, 150],
+            "borderRadius": 4
+          }
+        ]
+      }'
+      ) 
+    %>
+  <% end %>
+
+  <%= render RailsUi::Card::Component.new(
+    title: "Doughnut Chart", 
+    description: "Breakdown by category") do %>
+    <%= render RailsUi::Chart::Component.new(
+      type: "doughnut",
+      config: '{
+        "responsive": true,
+        "plugins": {
+          "legend": {
+            "display": false
+          },
+          "tooltip": {
+            "mode": "index",
+            "intersect": false
+          }
+        },
+        "cutout": "70%"
+      }',
+      data: '{
+        "labels": ["Mobile", "Desktop", "Tablet"],
+        "datasets": [
+          {
+            "label": "Devices",
+            "backgroundColor": ["rgba(255, 99, 132, 0.5)", "rgba(54, 162, 235, 0.5)", "rgba(255, 206, 86, 0.5)"],
+            "borderColor": ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)"],
+            "data": [300, 500, 100],
+            "hoverOffset": 4
+          }
+        ]
+      }'
+      ) 
+    %>
+  <% end %>
+
+
+</div>

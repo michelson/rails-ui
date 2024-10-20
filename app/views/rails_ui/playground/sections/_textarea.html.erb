@@ -1,1 +1,13 @@
-soon
+
+
+<%= form_with(model: @user_form, builder: RailsUi::FormHelper) do |form| %>
+  <!-- Textarea with label and placeholder -->
+  <%= form.textarea_field :description, label: 'Description', placeholder: 'Enter description here...', rows: 4 %>
+
+  <!-- Textarea with custom label and helper text -->
+  <%= form.textarea_field :notes, label: 'Custom Label', helper: 'Additional information goes here', ring_color: '234 89% 74%' %>
+
+  <!-- Textarea without label -->
+  <%= form.textarea_field :comments, label: false, placeholder: 'Your comments...' %>
+
+<% end %>

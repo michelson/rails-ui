@@ -46,7 +46,7 @@ class RailsUi::FormHelper < ActionView::Helpers::FormBuilder
       "flex h-9 w-full border #{rounded_class} px-3 py-2 text-sm text-foreground shadow-black/[.04]",
       "ring-offset-background transition-shadow placeholder:text-muted-foreground/70",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-      "disabled:cursor-not-allowed disabled:opacity-50"
+      "disabled:cursor-not-allowed disabled:opacity-50 bg-background"
     ]
 
     # Add error classes if there are errors
@@ -194,7 +194,7 @@ class RailsUi::FormHelper < ActionView::Helpers::FormBuilder
     value = options[:value] || 0
 
     # Generate the full markup with label, number input field, and helper text
-    @template.content_tag(:div, class: "space-y-2", style: container_style) do
+    @template.content_tag(:div, class: "space-y-2", data: {controller: "ui-number-input"}, style: container_style) do
       # Label element
       if label_text.present?
         @template.concat(
@@ -208,7 +208,7 @@ class RailsUi::FormHelper < ActionView::Helpers::FormBuilder
         @template.concat(
           @template.content_tag(:div, role: "group", class: "relative inline-flex h-9 w-full items-center overflow-hidden whitespace-nowrap rounded-lg border border-input text-sm shadow-sm shadow-black/[.04] ring-offset-background transition-shadow data-[focus-within]:border-ring data-[disabled]:opacity-50 data-[focus-within]:outline-none data-[focus-within]:ring-2 data-[focus-within]:ring-ring/30 data-[focus-within]:ring-offset-2") do
             # Decrement button
-            decrement_button_html = @template.content_tag(:button, type: "button", tabindex: "-1", "aria-label": "Decrease", "aria-controls": input_id, class: "-ml-px flex aspect-square h-[inherit] items-center justify-center rounded-l-lg border border-input bg-background text-sm text-muted-foreground/80 ring-offset-background transition-shadow hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50") do
+            decrement_button_html = @template.content_tag(:button, data: {action: "click->ui-number-input#down"}, type: "button", tabindex: "-1", "aria-label": "Decrease", "aria-controls": input_id, class: "-ml-px flex aspect-square h-[inherit] items-center justify-center rounded-l-lg border border-input bg-background text-sm text-muted-foreground/80 ring-offset-background transition-shadow hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50") do
               '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus" aria-hidden="true" role="presentation"><path d="M5 12h14"></path></svg>'.html_safe
             end
 
@@ -216,16 +216,17 @@ class RailsUi::FormHelper < ActionView::Helpers::FormBuilder
             input_html = number_field(
               method,
               **options.merge(
-                class: "no-arrows w-full grow bg-background px-3 py-2 text-center tabular-nums text-foreground focus:outline-none",
+                class: "no-arrows border-none w-full grow bg-background px-3 py-2 text-center tabular-nums text-foreground focus:outline-none",
                 autocomplete: "off",
                 inputmode: "numeric",
                 spellcheck: false,
+                "data-ui-number-input-target": "input",
                 "aria-roledescription": "Number field"
               )
             )
 
             # Increment button
-            increment_button_html = @template.content_tag(:button, type: "button", tabindex: "-1", "aria-label": "Increase", "aria-controls": input_id, class: "-mr-px flex aspect-square h-[inherit] items-center justify-center rounded-r-lg border border-input bg-background text-sm text-muted-foreground/80 ring-offset-background transition-shadow hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50") do
+            increment_button_html = @template.content_tag(:button, data: {action: "click->ui-number-input#up"}, type: "button", tabindex: "-1", "aria-label": "Increase", "aria-controls": input_id, class: "-mr-px flex aspect-square h-[inherit] items-center justify-center rounded-r-lg border border-input bg-background text-sm text-muted-foreground/80 ring-offset-background transition-shadow hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50") do
               '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true" role="presentation"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>'.html_safe
             end
 
@@ -241,10 +242,11 @@ class RailsUi::FormHelper < ActionView::Helpers::FormBuilder
             input_html = number_field(
               method,
               **options.merge(
-                class: "no-arrows flex-1 bg-background px-3 py-2 tabular-nums text-foreground focus:outline-none",
+                class: "no-arrows border-none flex-1 bg-background px-3 py-2 tabular-nums text-foreground focus:outline-none",
                 autocomplete: "off",
                 inputmode: "numeric",
                 spellcheck: false,
+                "data-ui-number-input-target": "input",
                 "aria-roledescription": "Number field"
               )
             )
@@ -252,12 +254,12 @@ class RailsUi::FormHelper < ActionView::Helpers::FormBuilder
             # Increment and decrement buttons stacked vertically on the right
             button_group_html = @template.content_tag(:div, class: "flex h-[calc(100%+2px)] flex-col") do
               # Increment button
-              increment_button_html = @template.content_tag(:button, type: "button", tabindex: "-1", "aria-label": "Increase", "aria-controls": input_id, class: "-mr-px flex h-1/2 w-6 flex-1 items-center justify-center rounded-tr-lg border border-input bg-background text-sm text-muted-foreground/80 ring-offset-background transition-shadow hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50") do
+              increment_button_html = @template.content_tag(:button, data: {action: "click->ui-number-input#down"}, type: "button", tabindex: "-1", "aria-label": "Increase", "aria-controls": input_id, class: "-mr-px flex h-1/2 w-6 flex-1 items-center justify-center rounded-tr-lg border border-input bg-background text-sm text-muted-foreground/80 ring-offset-background transition-shadow hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50") do
                 '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up" aria-hidden="true" role="presentation"><path d="M18 15L12 9L6 15"></path></svg>'.html_safe
               end
 
               # Decrement button
-              decrement_button_html = @template.content_tag(:button, type: "button", tabindex: "-1", "aria-label": "Decrease", "aria-controls": input_id, class: "-mr-px -mt-px flex h-1/2 w-6 flex-1 items-center justify-center rounded-br-lg border border-input bg-background text-sm text-muted-foreground/80 ring-offset-background transition-shadow hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50") do
+              decrement_button_html = @template.content_tag(:button, data: {action: "click->ui-number-input#up"}, type: "button", tabindex: "-1", "aria-label": "Decrease", "aria-controls": input_id, class: "-mr-px -mt-px flex h-1/2 w-6 flex-1 items-center justify-center rounded-br-lg border border-input bg-background text-sm text-muted-foreground/80 ring-offset-background transition-shadow hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50") do
                 '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true" role="presentation"><path d="M6 9L12 15L18 9"></path></svg>'.html_safe
               end
 
@@ -508,153 +510,218 @@ class RailsUi::FormHelper < ActionView::Helpers::FormBuilder
   end
 
   def date_time_picker_field(method, options = {})
-  # Extract label option from options. Default is true, unless explicitly set to false.
-  label_option = options.key?(:label) ? options.delete(:label) : true
+    # Extract label option from options. Default is true, unless explicitly set to false.
+    label_option = options.key?(:label) ? options.delete(:label) : true
 
-  # Set default label text if label is not false
-  label_text = label_option.is_a?(String) ? label_option : method.to_s.humanize if label_option
+    # Set default label text if label is not false
+    label_text = label_option.is_a?(String) ? label_option : method.to_s.humanize if label_option
 
-  # Set a default ID if not provided
-  input_id = options[:id] || "#{object_name}_#{method}"
+    # Set a default ID if not provided
+    input_id = options[:id] || "#{object_name}_#{method}"
 
-  # Extract ring color CSS variable from options
-  ring_color = options.delete(:ring_color)
+    # Extract ring color CSS variable from options
+    ring_color = options.delete(:ring_color)
 
-  # Inline style for ring color if provided
-  container_style = ring_color.present? ? "--ring: #{ring_color}" : ""
+    # Inline style for ring color if provided
+    container_style = ring_color.present? ? "--ring: #{ring_color}" : ""
 
-  # Extract segment options for date and time. Default all segments to true unless explicitly set to false.
-  include_day = options.key?(:day) ? options.delete(:day) : true
-  include_month = options.key?(:month) ? options.delete(:month) : true
-  include_year = options.key?(:year) ? options.delete(:year) : true
-  include_hour = options.key?(:hour) ? options.delete(:hour) : true
-  include_minute = options.key?(:minute) ? options.delete(:minute) : true
-  include_day_period = options.key?(:day_period) ? options.delete(:day_period) : true
+    # Extract segment options for date and time. Default all segments to true unless explicitly set to false.
+    include_day = options.key?(:day) ? options.delete(:day) : true
+    include_month = options.key?(:month) ? options.delete(:month) : true
+    include_year = options.key?(:year) ? options.delete(:year) : true
+    include_hour = options.key?(:hour) ? options.delete(:hour) : true
+    include_minute = options.key?(:minute) ? options.delete(:minute) : true
+    include_day_period = options.key?(:day_period) ? options.delete(:day_period) : true
 
-  # Generate the full markup with label and date-time input field segments
-  @template.content_tag(:div, class: "space-y-2", data: { controller: "ui-date-time-picker" }) do
-    # Label element
-    if label_text.present?
-      @template.concat(
-        @template.content_tag(:span, label_text, class: "text-sm font-medium text-foreground", id: "date-time-picker-label")
-      )
-    end
-
-    # Date and Time picker input group with day, month, year, hour, minute, and dayPeriod segments
-    @template.concat(
-      @template.content_tag(:div, role: "group", "aria-labelledby": "date-time-picker-label", class: "relative inline-flex h-9 w-full items-center overflow-hidden whitespace-nowrap rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm shadow-black/[.04] ring-offset-background transition-shadow data-[focus-within]:border-ring data-[disabled]:opacity-50 data-[focus-within]:outline-none data-[focus-within]:ring-2 data-[focus-within]:ring-ring/30 data-[focus-within]:ring-offset-2") do
-        # Day segment (optional)
-        if include_day
-          day_html = @template.content_tag(:div, "––", role: "spinbutton", "aria-valuenow": "0", "aria-valuemin": "1", "aria-valuemax": "31", 
-          tabindex: "0", data: {
-            action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#incrementSegment keyup.down->ui-date-time-picker#decrementSegment",
-            ui_date_time_picker_target: "day", type: "day"
-          },
-          class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
-          contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next", inputmode: "numeric")
-          @template.concat(day_html)
-        end
-
-        # Literal separator (optional, only if day and month are present)
-        if include_day && include_month
-          literal_html = @template.content_tag(:div, "/", aria_hidden: "true", class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed", data: { readonly: "true", type: "literal" })
-          @template.concat(literal_html)
-        end
-
-        # Month segment (optional)
-        if include_month
-          month_html = @template.content_tag(:div, "––", role: "spinbutton", "aria-valuenow": "0", "aria-valuemin": "1", "aria-valuemax": "12", 
-          tabindex: "0", data: {
-            action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#incrementSegment keyup.down->ui-date-time-picker#decrementSegment",
-            ui_date_time_picker_target: "month", type: "month"
-          },
-          class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
-          contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next", inputmode: "numeric")
-          @template.concat(month_html)
-        end
-
-        # Literal separator (optional, only if month and year are present)
-        if include_month && include_year
-          literal_html = @template.content_tag(:div, "/", aria_hidden: "true", class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed", data: { readonly: "true", type: "literal" })
-          @template.concat(literal_html)
-        end
-
-        # Year segment (optional)
-        if include_year
-          year_html = @template.content_tag(:div, "––", role: "spinbutton", "aria-valuenow": "0", tabindex: "0", data: {
-            action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#incrementSegment keyup.down->ui-date-time-picker#decrementSegment",
-            ui_date_time_picker_target: "year", type: "year"
-          },
-          class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
-          contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next", inputmode: "numeric")
-          @template.concat(year_html)
-        end
-
-        # Literal space separator (optional, if date and time segments are mixed)
-        if (include_year || include_month || include_day) && (include_hour || include_minute || include_day_period)
-          space_html = @template.content_tag(:div, " ", aria_hidden: "true", class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed", data: { readonly: "true", type: "literal" })
-          @template.concat(space_html)
-        end
-
-        # Hour segment (optional)
-        if include_hour
-          hour_html = @template.content_tag(:div, "––", role: "spinbutton", "aria-valuenow": "0", "aria-valuemin": "1", "aria-valuemax": "12", 
-          tabindex: "0", data: { 
-            action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#incrementSegment keyup.down->ui-date-time-picker#decrementSegment",
-            ui_date_time_picker_target: "hour", type: "hour"
-          }, 
-          class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
-          contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next", inputmode: "numeric")
-          @template.concat(hour_html)
-        end
-
-        # Literal separator (optional, only if hour and minute are present)
-        if include_hour && include_minute
-          literal_html = @template.content_tag(:div, ":", aria_hidden: "true", class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed", data: { readonly: "true", type: "literal" })
-          @template.concat(literal_html)
-        end
-
-        # Minute segment (optional)
-        if include_minute
-          minute_html = @template.content_tag(:div, "––", role: "spinbutton", "aria-valuenow": "0", "aria-valuemin": "0", "aria-valuemax": "59", 
-          tabindex: "0", data: {
-            action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#incrementSegment keyup.down->ui-date-time-picker#decrementSegment",
-            ui_date_time_picker_target: "minute", type: "minute"
-          }, 
-          class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
-          contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next", inputmode: "numeric")
-          @template.concat(minute_html)
-        end
-
-        # AM/PM segment (optional)
-        if include_day_period
-          day_period_html = @template.content_tag(:div, "AM", role: "spinbutton", "aria-valuetext": "AM", 
-          tabindex: "0", data: {
-            action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#toggleDayPeriod click->ui-date-time-picker#toggleDayPeriod",
-            ui_date_time_picker_target: "dayPeriod", type: "dayPeriod"
-          },
-          class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
-          contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next")
-          @template.concat(day_period_html)
-        end
+    # Generate the full markup with label and date-time input field segments
+    @template.content_tag(:div, class: "space-y-2", data: { controller: "ui-date-time-picker" }) do
+      # Label element
+      if label_text.present?
+        @template.concat(
+          @template.content_tag(:span, label_text, class: "text-sm font-medium text-foreground", id: "date-time-picker-label")
+        )
       end
-    )
 
-    # Helper text element (optional)
-    if options[:helper].present?
+      # Date and Time picker input group with day, month, year, hour, minute, and dayPeriod segments
       @template.concat(
-        @template.content_tag(:p, options[:helper], class: "mt-2 text-xs text-muted-foreground", role: "region", "aria-live": "polite")
+        @template.content_tag(:div, role: "group", "aria-labelledby": "date-time-picker-label", class: "relative inline-flex h-9 w-full items-center overflow-hidden whitespace-nowrap rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm shadow-black/[.04] ring-offset-background transition-shadow data-[focus-within]:border-ring data-[disabled]:opacity-50 data-[focus-within]:outline-none data-[focus-within]:ring-2 data-[focus-within]:ring-ring/30 data-[focus-within]:ring-offset-2") do
+          # Day segment (optional)
+          if include_day
+            day_html = @template.content_tag(:div, "––", role: "spinbutton", "aria-valuenow": "0", "aria-valuemin": "1", "aria-valuemax": "31", 
+            tabindex: "0", data: {
+              action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#incrementSegment keyup.down->ui-date-time-picker#decrementSegment",
+              ui_date_time_picker_target: "day", type: "day"
+            },
+            class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
+            contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next", inputmode: "numeric")
+            @template.concat(day_html)
+          end
+
+          # Literal separator (optional, only if day and month are present)
+          if include_day && include_month
+            literal_html = @template.content_tag(:div, "/", aria_hidden: "true", class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed", data: { readonly: "true", type: "literal" })
+            @template.concat(literal_html)
+          end
+
+          # Month segment (optional)
+          if include_month
+            month_html = @template.content_tag(:div, "––", role: "spinbutton", "aria-valuenow": "0", "aria-valuemin": "1", "aria-valuemax": "12", 
+            tabindex: "0", data: {
+              action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#incrementSegment keyup.down->ui-date-time-picker#decrementSegment",
+              ui_date_time_picker_target: "month", type: "month"
+            },
+            class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
+            contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next", inputmode: "numeric")
+            @template.concat(month_html)
+          end
+
+          # Literal separator (optional, only if month and year are present)
+          if include_month && include_year
+            literal_html = @template.content_tag(:div, "/", aria_hidden: "true", class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed", data: { readonly: "true", type: "literal" })
+            @template.concat(literal_html)
+          end
+
+          # Year segment (optional)
+          if include_year
+            year_html = @template.content_tag(:div, "––", role: "spinbutton", "aria-valuenow": "0", tabindex: "0", data: {
+              action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#incrementSegment keyup.down->ui-date-time-picker#decrementSegment",
+              ui_date_time_picker_target: "year", type: "year"
+            },
+            class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
+            contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next", inputmode: "numeric")
+            @template.concat(year_html)
+          end
+
+          # Literal space separator (optional, if date and time segments are mixed)
+          if (include_year || include_month || include_day) && (include_hour || include_minute || include_day_period)
+            space_html = @template.content_tag(:div, " ", aria_hidden: "true", class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed", data: { readonly: "true", type: "literal" })
+            @template.concat(space_html)
+          end
+
+          # Hour segment (optional)
+          if include_hour
+            hour_html = @template.content_tag(:div, "––", role: "spinbutton", "aria-valuenow": "0", "aria-valuemin": "1", "aria-valuemax": "12", 
+            tabindex: "0", data: { 
+              action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#incrementSegment keyup.down->ui-date-time-picker#decrementSegment",
+              ui_date_time_picker_target: "hour", type: "hour"
+            }, 
+            class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
+            contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next", inputmode: "numeric")
+            @template.concat(hour_html)
+          end
+
+          # Literal separator (optional, only if hour and minute are present)
+          if include_hour && include_minute
+            literal_html = @template.content_tag(:div, ":", aria_hidden: "true", class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed", data: { readonly: "true", type: "literal" })
+            @template.concat(literal_html)
+          end
+
+          # Minute segment (optional)
+          if include_minute
+            minute_html = @template.content_tag(:div, "––", role: "spinbutton", "aria-valuenow": "0", "aria-valuemin": "0", "aria-valuemax": "59", 
+            tabindex: "0", data: {
+              action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#incrementSegment keyup.down->ui-date-time-picker#decrementSegment",
+              ui_date_time_picker_target: "minute", type: "minute"
+            }, 
+            class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
+            contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next", inputmode: "numeric")
+            @template.concat(minute_html)
+          end
+
+          # AM/PM segment (optional)
+          if include_day_period
+            day_period_html = @template.content_tag(:div, "AM", role: "spinbutton", "aria-valuetext": "AM", 
+            tabindex: "0", data: {
+              action: "focus->ui-date-time-picker#focusSegment blur->ui-date-time-picker#blurSegment keydown.up->ui-date-time-picker#toggleDayPeriod click->ui-date-time-picker#toggleDayPeriod",
+              ui_date_time_picker_target: "dayPeriod", type: "dayPeriod"
+            },
+            class: "inline rounded p-0.5 text-foreground caret-transparent outline outline-0 data-[disabled]:cursor-not-allowed data-[focused]:bg-accent data-[invalid]:bg-destructive", 
+            contenteditable: "true", spellcheck: "false", autocorrect: "off", enterkeyhint: "next")
+            @template.concat(day_period_html)
+          end
+        end
       )
+
+      # Helper text element (optional)
+      if options[:helper].present?
+        @template.concat(
+          @template.content_tag(:p, options[:helper], class: "mt-2 text-xs text-muted-foreground", role: "region", "aria-live": "polite")
+        )
+      end
     end
   end
-end
-
 
   def email_field(method, options = {})
     default_classes = "border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
     options[:class] = "#{default_classes} #{options[:class]}"
     super(method, options)
   end
+
+  def textarea_field(method, options = {})
+    # Extract label option from options. Default is true, unless explicitly set to false.
+    label_option = options.key?(:label) ? options.delete(:label) : true
+
+    # Set default label text if label is not false
+    label_text = label_option.is_a?(String) ? label_option : method.to_s.humanize if label_option
+
+    # Set a default ID if not provided
+    input_id = options[:id] || "#{object_name}_#{method}"
+
+    # Extract ring color CSS variable from options
+    ring_color = options.delete(:ring_color)
+
+    # Inline style for ring color if provided
+    container_style = ring_color.present? ? "--ring: #{ring_color}" : ""
+
+    # Extract helper text from options, default to nil if not provided
+    helper_text = options.delete(:helper)
+
+    # Extract placeholder text from options, default to nil if not provided
+    placeholder_text = options.delete(:placeholder)
+
+    # Extract rows option for the textarea, default to 3 if not provided
+    rows = options.delete(:rows) || 3
+
+    # Extract disabled option
+    disabled = options.delete(:disabled) { false }
+
+    # Define default classes for the textarea
+    default_classes = "w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground shadow-sm shadow-black/[.04] ring-offset-background transition-shadow placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+
+    # Merge default classes with any additional classes from options
+    options[:class] = "#{default_classes} #{options[:class]}".strip
+
+    # Set other textarea attributes
+    options.merge!(
+      id: input_id,
+      rows: rows,
+      placeholder: placeholder_text,
+      disabled: disabled
+    )
+
+    # Generate the full markup with label, textarea, and helper text
+    @template.content_tag(:div, class: "space-y-2", style: container_style) do
+      # Label element
+      if label_text.present?
+        @template.concat(
+          @template.content_tag(:label, label_text, for: input_id, class: "text-sm font-medium text-foreground")
+        )
+      end
+
+      # Textarea element
+      @template.concat(
+        @template.text_area(object_name, method, options)
+      )
+
+      # Helper text element if helper_text is present
+      if helper_text.present?
+        @template.concat(
+          @template.content_tag(:p, helper_text, class: "mt-2 text-xs text-muted-foreground", role: "region", "aria-live": "polite")
+        )
+      end
+    end
+  end
+
 
   # Add other input methods here as needed
 end

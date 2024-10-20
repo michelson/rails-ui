@@ -65,5 +65,23 @@ module RailsUi
         { title: "Tooltip",  type: "link"}
      ]
     end
+
+    def next_section
+      items = rails_ui_nav_items
+      current_section = @section.parameterize.underscore
+      current_index = items.find_index { |item| item[:title].parameterize.underscore == @section }
+      return "#" unless current_index
+    
+      items[(current_index + 1)..].find { |item| item[:type] == "link" }[:title].parameterize.underscore
+    end
+    
+    def prev_section
+      items = rails_ui_nav_items
+      current_section = @section.parameterize.underscore
+      current_index = items.find_index { |item| item[:title].parameterize.underscore == @section }
+      return "#" unless current_index
+    
+      items[0...current_index].reverse.find { |item| item[:type] == "link" }[:title].parameterize.underscore
+    end
   end
 end
