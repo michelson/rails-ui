@@ -2,25 +2,24 @@
 
 module RailsUi
   module ToastItem
-  
     class Component < ApplicationViewComponent
       option :title
       option :content
       option :type, default: -> { "info" }
 
       def call
-        content_tag :li, 
-                    class: toast_classes,
-                    aria: { live: "polite", atomic: true },
-                    role: "status",
-                    tabindex: "0",
-                    data: {
-                      ui_toast_target: "item",
-                      action: "click->ui-toast#dismiss"
-                    } do
-          content_tag :div, data: { content: "" } do
-            content_tag(:div, title, data: { title: "" }) +
-            content_tag(:div, content)
+        content_tag :li,
+          class: toast_classes,
+          aria: {live: "polite", atomic: true},
+          role: "status",
+          tabindex: "0",
+          data: {
+            ui_toast_target: "item",
+            action: "click->ui-toast#dismiss"
+          } do
+          content_tag :div, data: {content: ""} do
+            content_tag(:div, title, data: {title: ""}) +
+              content_tag(:div, content)
           end
         end
       end

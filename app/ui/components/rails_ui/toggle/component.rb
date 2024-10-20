@@ -5,7 +5,7 @@ class RailsUi::Toggle::Component < ApplicationViewComponent
   option :variant, default: -> { :default }
   option :size, default: -> { :default }
   option :disabled, default: -> { false }
-  option :aria_label, default: -> { nil }
+  option :aria_label, default: -> {}
   option :classes, default: -> { "" }
 
   renders_one :icon

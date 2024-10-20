@@ -1,10 +1,9 @@
 module RailsUi
   module ApplicationHelper
-
     def rails_ui_nav_items
-      [ 
-        { title: "Getting Started", type: "section"},
-        { title: "Introduction", type: "link"},
+      [
+        {title: "Getting Started", type: "section"},
+        {title: "Introduction", type: "link"},
         # { title: "Installation", type: "link"},
         # { title: "components.json", type: "link"},
         { title: "Theming", type: "link"},

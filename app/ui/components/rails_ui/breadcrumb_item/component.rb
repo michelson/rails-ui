@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-class RailsUi::BreadcrumbItem::Component < ApplicationViewComponent
 
-  option :href, default: -> {"#"}
+class RailsUi::BreadcrumbItem::Component < ApplicationViewComponent
+  option :href, default: -> { "#" }
   option :current, default: -> { false }
 
   def call

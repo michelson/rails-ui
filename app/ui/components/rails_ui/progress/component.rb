@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 class RailsUi::Progress::Component < ApplicationViewComponent
-  option :value, default: -> { nil }
+  option :value, default: -> {}
   option :max, default: -> { 100 }
-  option :width, default: -> { '60%' }
+  option :width, default: -> { "60%" }
 
   def indeterminate?
     value.nil?

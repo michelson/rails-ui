@@ -3,5 +3,5 @@
 class RailsUi::Card::Component < ApplicationViewComponent
   option :title
   option :description
-  option :footer, default: -> { nil }
+  option :footer, default: -> {}
 end

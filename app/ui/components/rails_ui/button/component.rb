@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
 class RailsUi::Button::Component < ApplicationViewComponent
-  option :variant, default: ->{:default}
-  option :title, default: ->{}
-  option :size, default: ->{:default}
-  option :data, default: ->{{}}
-  option :options, default: -> {{}}
+  option :variant, default: -> { :default }
+  option :title, default: -> {}
+  option :size, default: -> { :default }
+  option :data, default: -> { {} }
+  option :options, default: -> { {} }
 
-  #include ViewComponent::Slotable
+  # include ViewComponent::Slotable
   renders_one :icon
-
 
   def button_attributes
     opts = {

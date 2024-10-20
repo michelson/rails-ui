@@ -6,10 +6,10 @@ class RailsUi::Button::Preview < ApplicationViewComponentPreview
   layout "rails_ui/preview"
 
   def default
-    render(RailsUi::Button::Component.new{"dfdfdf"})
+    render(RailsUi::Button::Component.new { "dfdfdf" })
   end
 
   def with_dynamic_title(title: "Example component default")
-    render(RailsUi::Button::Component.new{"dfdfdf"})
+    render(RailsUi::Button::Component.new { "dfdfdf" })
   end
 end
