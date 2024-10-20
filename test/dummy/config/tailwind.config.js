@@ -12,6 +12,7 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
+    path.join(__dirname, '../../../app/helpers/rails_ui/*.rb'),
     path.join(__dirname, '../../../app/ui/**/*.{erb,rb,html.erb,js,css,scss}'),
     path.join(__dirname, '../../../app/views/**/*.{erb,rb,html.erb,js,css,scss}'),
   ],

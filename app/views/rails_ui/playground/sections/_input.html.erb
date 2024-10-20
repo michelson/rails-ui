@@ -1,0 +1,142 @@
+<%
+
+  form_model = RailsUi::UserForm.new
+  form_model.valid?
+%>
+
+
+
+<%= form_with(model: form_model, url: "/#", builder: RailsUi::FormHelper) do |form| %>
+  <div class="grid grid-cols-3 gap-6">
+    <%= form.text_field :name, placeholder: "Name" %>
+    <%= form.text_field :name, label: "Required input", required: true %>
+    <%= form.text_field :name, label: "Input with helper", helper: "We won't share your email with anyone" %>
+    <%= form.text_field :name, label: "Input with Hint", hint: "Optional" %>
+    <%= form.text_field :name, label: 'Custom Ring Color', ring_color: "240 100% 70%" %>
+    <%= form.text_field :email, label: 'Custom Ring Color', ring_color: "240 100% 70%" %>
+    <%= form.text_field :name, placeholder: 'Username', label: 'Username', class: "border-transparent bg-muted shadow-none", helper: 'Choose a unique username.' %>
+    <%= form.text_field :name, label: "Disabled input", disabled: true, placeholder: "Name" %>
+
+    <%= form.text_field :name, placeholder: 'Email', label: 'With Icon', 
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-at-sign" aria-hidden="true" role="presentation"><circle cx="12" cy="12" r="4"></circle><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"></path></svg>'
+    %>
+
+    <%= form.text_field :name, placeholder: 'Email', label: 'With Right Icon', 
+      icon_right: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true" role="presentation"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>'
+    %>
+
+    <%= form.text_field :url, 
+      placeholder: 'google.com', 
+      label: 'Input with left inline add-on', 
+      inline_left_addon: 'https://'
+    %>
+
+    <%= form.text_field :url, 
+      placeholder: 'google', 
+      label: 'Input with right inline add-on', 
+      inline_right_addon: '.com' 
+    %>
+
+    <%= form.text_field :url, 
+      placeholder: 'google', 
+      label: 'Input with inline add-ons', 
+      inline_right_addon: 'EUR',
+      icon: '€'
+    %>
+
+
+    <%= form.text_field :url, 
+      placeholder: 'google.com', 
+      label: 'With left inline add-on', 
+      left_addon: 'https://'
+    %>
+
+    <%= form.text_field :url, 
+      placeholder: 'google', 
+      label: 'With right inline add-on', 
+      right_addon: '.com' 
+    %>
+
+    <%= form.text_field :url, 
+      placeholder: 'google', 
+      label: 'With inline add-ons', 
+      right_addon: 'EUR',
+      icon: '€'
+    %>
+
+    <div>
+      Input with left select
+    </div>
+
+    <div>
+      Input with right select
+    </div>
+
+
+   <%= form.text_field :name, 
+    label: 'Input with Inline Button', 
+    inline_right_button: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send" aria-hidden="true" role="presentation"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>'.html_safe
+  %>
+
+  <%= form.text_field :name, 
+    label: 'Input with Right Icon Button', 
+    right_button: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download" aria-hidden="true" role="presentation"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>'.html_safe
+  %>
+
+  <%= form.text_field :name, 
+    label: 'Input with Right Button', 
+    right_button: 'Send'.html_safe
+  %>
+
+  <div>Input with button</div>
+  <div>Show/hide password input</div>
+  <div>Input with clear button</div>
+
+
+
+    <%= form.number_field_with_buttons :quantity, 
+      label: 'Number input with plus/minus buttons', 
+      value: 2048, 
+      helper: "Enter the desired quantity." 
+    %>
+
+    <%= form.number_field_with_buttons :price, 
+      label: 'Number input with chevrons', 
+      variant: :right_buttons, 
+      value: 96.0, 
+      helper: "Enter the price in euros." %>
+
+
+    <%= form.file_field_with_label :avatar, 
+      label: 'File input', 
+      helper: "Upload your file here." 
+    %>
+
+    <%= form.card_number_field :card_number, 
+      label: 'Card Number', 
+      helper: "Enter your card number here." 
+    %>
+
+    <%= form.expiry_date_field :expiry_date, 
+      label: 'Expiry date', 
+      helper: "Enter your card expiry date here." 
+    %>
+
+    <%= form.cvc_field :cvc, 
+      label: 'Code', 
+      helper: "Enter the three or four-digit code on the back of your card." 
+    %>
+
+
+
+
+
+
+  </div>
+
+
+
+  <div class="mt-4">
+    <%= form.submit "Submit", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
+<% end %>

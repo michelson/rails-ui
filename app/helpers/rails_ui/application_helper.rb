@@ -38,7 +38,7 @@ module RailsUi
         { title: "Dropdown-Menu", type: "link"},
         { title: "Form", type: "link"},
         { title: "Hover Card", type: "link"},
-        # { title: "Input", type: "link"},
+        { title: "Input", type: "link"},
         { title: "Input OTP", type: "link"},
         { title: "Label", type: "link"},
         { title: "Menubar", type: "link"},

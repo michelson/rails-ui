@@ -32,7 +32,7 @@
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --ring: 215 20.2% 65.1%;
+    --ring: 240 5% 64.9%;
 
     --radius: 0.5rem;
 
@@ -80,5 +80,15 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  input.no-arrows[type="number"]::-webkit-outer-spin-button,
+  input.no-arrows[type="number"]::-webkit-inner-spin-button {
+    @apply appearance-none m-0;
+  }
+
+  input.no-arrows[type="number"] {
+    @apply appearance-none; /* Apply default appearance reset for consistent styling */
+    -moz-appearance: textfield; /* Firefox-specific */
   }
 }
