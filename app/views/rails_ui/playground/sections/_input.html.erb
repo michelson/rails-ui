@@ -92,44 +92,90 @@
   <div>Show/hide password input</div>
   <div>Input with clear button</div>
 
+  <%= form.number_field_with_buttons :quantity, 
+    label: 'Number input with plus/minus buttons', 
+    value: 2048, 
+    helper: "Enter the desired quantity." 
+  %>
+
+  <%= form.number_field_with_buttons :price, 
+    label: 'Number input with chevrons', 
+    variant: :right_buttons, 
+    value: 96.0, 
+    helper: "Enter the price in euros." %>
 
 
-    <%= form.number_field_with_buttons :quantity, 
-      label: 'Number input with plus/minus buttons', 
-      value: 2048, 
-      helper: "Enter the desired quantity." 
-    %>
+  <%= form.file_field_with_label :avatar, 
+    label: 'File input', 
+    helper: "Upload your file here." 
+  %>
 
-    <%= form.number_field_with_buttons :price, 
-      label: 'Number input with chevrons', 
-      variant: :right_buttons, 
-      value: 96.0, 
-      helper: "Enter the price in euros." %>
+  <%= form.card_number_field :card_number, 
+    label: 'Card Number', 
+    helper: "Enter your card number here." 
+  %>
 
+  <%= form.expiry_date_field :expiry_date, 
+    label: 'Expiry date', 
+    helper: "Enter your card expiry date here." 
+  %>
 
-    <%= form.file_field_with_label :avatar, 
-      label: 'File input', 
-      helper: "Upload your file here." 
-    %>
-
-    <%= form.card_number_field :card_number, 
-      label: 'Card Number', 
-      helper: "Enter your card number here." 
-    %>
-
-    <%= form.expiry_date_field :expiry_date, 
-      label: 'Expiry date', 
-      helper: "Enter your card expiry date here." 
-    %>
-
-    <%= form.cvc_field :cvc, 
-      label: 'Code', 
-      helper: "Enter the three or four-digit code on the back of your card." 
-    %>
+  <%= form.cvc_field :cvc, 
+    label: 'Code', 
+    helper: "Enter the three or four-digit code on the back of your card." 
+  %>
 
 
+  <%= form.text_field :name, 
+    wrapper: {
+      data: {
+        controller: "ui-input-counter"}
+      },
+    data: {
+      "ui-input-counter-target": "input",
+      action: "input->ui-input-counter#onInput"
+    },
+    label: 'Input with counter',
+    maxlength: 20, 
+    right_addon: ' <div
+      data-ui-input-counter-target="counter"
+      class="px-2 mt-1 pointer-events-none absolute- inset-y-0 right-0 flex items-center justify-center pr-3 text-xs tabular-nums text-muted-foreground peer-disabled:opacity-50"
+      aria-live="polite"
+      role="status"
+    >
+      0/50
+    </div>'.html_safe
+  %>
 
 
+  <%= form.text_field :name, 
+    wrapper: {
+      data: {
+        controller: "ui-input-counter"}
+      },
+    data: {
+      "ui-input-counter-target": "input",
+      action: "input->ui-input-counter#onInput"
+    },
+    label: 'Input with counter',
+    maxlength: 20, 
+    helper: ' <div
+      aria-live="polite"
+      class="text-xs text-muted-foreground"
+      role="status"
+    >
+      <span data-ui-input-counter-target="charactersLeft"></span> characters left
+    </div>'.html_safe
+  %>
+
+
+  <%= form.date_time_picker_field :full_time_input, label: 'Full Time Input', helper: 'Select the full time with hours, minutes, and AM/PM.' %>
+
+  <!-- Date picker field with only hour and minute -->
+  <%= form.date_time_picker_field :hour_minute_input, label: 'Hour & Minute Input', day: false, year: false, month: false, hour: true, minute: true, day_period: false, helper: 'Select the hour and minute.' %>
+
+  <!-- Date picker field with only hour -->
+  <%= form.date_time_picker_field :hour_input, label: 'Hour Input', day: false, year: false, month: false, hour: true, minute: false, day_period: false, helper: 'Select the hour.' %>
 
 
   </div>
